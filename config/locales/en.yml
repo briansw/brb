@@ -1,0 +1,45 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  admin:
+    access:
+      denied: "Can't access that resource"
+    resource:
+      has_errors: 
+        one: "%{count} error prohibited this article from being saved:"
+        other: "%{count} errors prohibited this article from being saved:"
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} was successfully created."
+      update:
+        notice: "%{resource_name} was successfully updated."
+      destroy:
+        notice: "%{resource_name} was successfully destroyed."
+        alert: "%{resource_name} could not be destroyed."
+  views:
+    pagination:
+      first: "&larr; First"
+      last: "Last &rarr;"
+      previous: "&larr; Prev"
+      next: "Next &rarr;"
+      truncate: "&hellip;"

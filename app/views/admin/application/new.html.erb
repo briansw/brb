@@ -1,0 +1,14 @@
+<div class="page-header">
+  <h1>New <%= resource_instance_name.to_s.titleize %></h1>
+  <%= link_to('Back', collection_path, class: 'large-button') %>
+</div>
+
+<div class="record-form">
+  <%= admin_form_for([:admin, resource]) do |f| %>
+    <%= errors_for(resource) %>
+    <div class="fields">
+      <%= render 'form', f: f %>
+    </div>
+    <%= f.actions %>
+  <% end %>
+</div>

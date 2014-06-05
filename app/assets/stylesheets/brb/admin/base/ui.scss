@@ -1,0 +1,195 @@
+input, textarea {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+input[type="text"], input[type="password"] {
+  @extend %regular;
+  border: 1px solid $gray;
+  @extend %one-tenth-space-after;
+  padding: 10px;
+  border-radius: 3px;
+  &:focus { outline: none; border-color: $dark_gray; }
+}
+
+textarea {
+  @extend %regular;
+  border: 1px solid $gray;
+  @extend %one-tenth-space-after;
+  padding: 10px;
+  border-radius: 3px;
+  width: 100%;
+  min-height: 100px;
+  max-height: 300px;
+  &:focus { outline: none; border-color: $dark_gray; }
+}
+
+input[type="button"], input[type="submit"], input[type="file"] {
+  @extend %regular;
+  padding: 10px;
+  @extend %one-tenth-space-after;
+  border-radius: 3px;
+  color: $white;
+  background: $green;
+  border: 1px solid $green;
+  -webkit-box-shadow: inset 0 0 3px $dark_green;
+     -moz-box-shadow: inset 0 0 3px $dark_green;
+          box-shadow: inset 0 0 3px $dark_green;
+  &:hover { border-color: $dark_green; }
+  &:active { border-color: $green; }
+  &:focus { outline: none; }
+  cursor:pointer;
+}
+
+input[type="file"] {
+  @include inlineblock; padding: 5px;
+}
+
+
+.notice {
+  @extend %full-width;
+  @extend %one-tenth-space-after;
+  position: relative;
+  padding: 20px;
+  color: $white;
+  text-align: left;
+  &.message { background: $green; }
+  &.error { background: $red; }
+  &:after { content: '\00d7'; position: absolute; right: 20px; top: 50%; margin-top: -8px; }
+  cursor: pointer;
+
+  li:before { content: "\2014"; }
+
+}
+
+.field_with_errors {
+  color: $red;
+  input { border-color: $red; }
+  input:focus { border-color: $dark_red; }
+}
+
+
+.dropdown-spacer { height: 40px; }
+.dropdown-wrapper { min-width: 135px; position: absolute; z-index: 1; top: -10px; &.active-dropdown { z-index: 2; } }
+.dropdown-selected {
+  @extend %regular;
+  color: $black;
+  background: $white;
+  border: 1px solid $gray;
+  padding: 10px 35px 10px 10px;
+  @extend %one-tenth-space-after;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 3px $gray;
+     -moz-box-shadow: inset 0 0 3px $gray;
+          box-shadow: inset 0 0 3px $gray;
+  cursor: pointer;
+  &:hover { border-color: $dark_gray; }
+  &:active { border-color: $gray; }
+  &:focus { outline: none; }
+  &:after { content: '▾'; position: absolute; right: 13px; }
+}
+
+.dropdown-list {
+  display: none;
+  @extend %regular;
+  @extend %one-tenth-space-after;
+  position: relative;
+  top: -8px;
+  background: $white;
+  border: 1px solid $gray;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 3px $gray;
+     -moz-box-shadow: 0 0 3px $gray;
+          box-shadow: 0 0 3px $gray;
+  li { display: block; width: 100%; padding: 0 !important; }
+  a {
+    display: block;
+
+    margin: 0;
+    border-bottom: 1px solid $gray !important;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    color: $dark_gray;
+    &:hover { color: $black; }
+    &.selected { color: $black; }
+    &.disabled { color: $gray; }
+  }
+  li:last-child a { border: none !important; }
+}
+
+
+#void {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  &.saving {
+    background: $white;
+    opacity: 0.3;
+    text-align: center;
+    p { @include verticalalign; @include horizontalalign; background: $yellow; }
+  }
+}
+
+
+
+.large-button {
+  position: relative;
+  top: -5px;
+  @extend %regular;
+  color: $black;
+  background: $light_gray;
+  border: 1px solid $gray;
+  &.action {
+    color: $white;
+    background: $green;
+    border: 1px solid $green;
+    -webkit-box-shadow: inset 0 0 3px $dark_green;
+       -moz-box-shadow: inset 0 0 3px $dark_green;
+            box-shadow: inset 0 0 3px $dark_green;
+    &:hover { border-color: $dark_green; }
+    &:active { border-color: $green; }
+  }
+  padding: 10px;
+  @extend %one-tenth-space-after;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 3px $gray;
+     -moz-box-shadow: inset 0 0 3px $gray;
+          box-shadow: inset 0 0 3px $gray;
+  cursor: pointer;
+  &:hover { border-color: $dark_gray; }
+  &:active { border-color: $gray; }
+  &:focus { outline: none; }
+
+  &.delete {
+    color: $white;
+    background: $red;
+    border: 1px solid $red;
+    -webkit-box-shadow: inset 0 0 3px $dark_red;
+       -moz-box-shadow: inset 0 0 3px $dark_red;
+            box-shadow: inset 0 0 3px $dark_red;
+    &:hover { border-color: $dark_red; }
+    &:active { border-color: $red; }
+    &:focus { outline: none; }
+  }
+}
+
+.delete-slide {
+  color: $red;
+  @include verticalalign;
+  right: $gutter;
+}
+
+.small-button {
+  @extend .large-button;
+  padding: 5px 8px;
+  position: static;
+}
+
+.cancel-button {
+  margin: 0 $gutter;
+  @include underline;
+}
+
+
+

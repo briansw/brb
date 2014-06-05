@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HDM Admin</title>
+    <%= stylesheet_link_tag 'brb/application', media: 'all' %>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="<%= controller.controller_name %>">
+    <div id="void" class="hide"></div>
+
+    <div id="page">
+      <%= render 'admin/dashboard/navigation' %>
+      <%= display_notice(notice, alert) if notice || alert %>
+      <%= yield %>
+    </div>
+    <%= javascript_include_tag 'brb/application' %>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<div class="content-block-wrapper" id="content-block-<%= content_block_id %>-wrapper">
+  <div id="placeholder-options"></div>
+
+    <div id="content-block-<%= content_block_id %>" class="content-block" style="display: none;">
+
+      <%= render('admin/content_blocks/actions', content_block_id: content_block_id, content_block_field: content_block_field, existing: false, kind: block_type) %>
+
+      <div class="content">
+        <%= f.fields_for :content_blocks, content_block, child_index: id do |content_block_field| %>
+
+            <%= content_block_field.hidden_field :parent_type %>
+            <%= content_block_field.hidden_field :parent_id %>
+            <%= content_block_field.hidden_field :block_type, value: block_type %>
+            <%= content_block_field.hidden_field :position, class: 'position' %>
+
+            <%= render "admin/content_blocks/#{block_type.underscore}/new", content_block_id: content_block_id, content_block: content_block, content_block_field: content_block_field %>
+
+        <% end %>
+      </div>
+
+    </div>
+</div>

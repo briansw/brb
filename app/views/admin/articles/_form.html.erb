@@ -1,0 +1,63 @@
+<div class="field">
+  <%= f.label :article_type_id %>
+  <% article_types = ArticleType.all.collect { |article_type| [article_type.name, article_type.id] } %>
+  <%= f.select(:article_type_id, options_for_select(article_types, { selected: @article.article_type_id }), {}, class: 'select2') %>
+</div>
+
+<div class="field">
+  <%= f.label :issue_id %>
+  <% issues = Issue.all.collect { |issue| ["No. #{issue.number}: #{issue.title}", issue.id] } %>
+  <%= f.select(:issue_id, options_for_select(issues, { selected: @article.issue_id }), {}, class: 'select2') %>
+</div>
+
+<div class="field">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+
+<div class="field">
+  <%= f.label :authors %>
+  <%= f.relation_field :authors, label_field: 'full_name', name: 'article[authors]' %>
+</div>
+
+<div class="field">
+  <%= f.label :tags %>
+  <%= f.tag_field :tags %>
+</div>
+
+<div class="field">
+  <%= f.label :poster_frame %>
+  <%= f.image_field :poster_frame %>
+
+  <div class="options" style="margin: 10px 0 0 130px;">
+    <%= f.check_box :large_poster_frame %>
+    <%= f.label :large_poster_frame, class: 'inline' %>
+
+    <%= f.check_box :black_poster_frame_text %>
+    <%= f.label :black_poster_frame_text, 'Use Black poster frame text', class: 'inline' %>
+  </div>
+</div>
+
+<div class="field">
+  <%= f.label :print_only %>
+  <%= f.check_box :print_only %>
+</div>
+
+<div class="field">
+  <%= f.label :active %>
+  <%= f.check_box :active %>
+</div>
+
+<%= f.content_block_fields %>
+
+<hr />
+
+<div class="field">
+  <%= f.label :footnotes %>
+  <%= f.rich_text_area :footnotes, toolbar: true %>
+</div>
+
+<div class="field">
+  <%= f.label :attribution_text, 'Author attributions' %>
+  <%= f.rich_text_area :attribution_text, toolbar: true %>
+</div>

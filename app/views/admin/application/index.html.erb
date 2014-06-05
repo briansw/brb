@@ -1,0 +1,9 @@
+<div class="page-header">
+    <h1><%= resource_collection_name.to_s.titleize %></h1>
+    <%= link_to_new %>
+    <%= collection_search_form %>
+</div>
+
+<div id="<%= resource_collection_name %>-crud-table" class="crud-table">
+    <%= render partial: 'admin/shared/crud_table' %>
+</div>

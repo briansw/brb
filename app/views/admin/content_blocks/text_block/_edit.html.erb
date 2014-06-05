@@ -1,0 +1,17 @@
+<%= content_block_field.fields_for :text_block do |field| %>
+  <div class="field">
+      <%= field.text_field :title, placeholder: 'Title' %>
+  </div>
+
+  <div class="field">
+    <%= field.rich_text_area :body, placeholder: 'Content' %>
+  </div>
+
+  <div class="field">
+    <%= field.check_box :large_size %>
+    <%= field.label :large_size %>
+
+    <%= field.check_box :block_quote %>
+    <%= field.label :block_quote %>
+  </div>
+<% end %>

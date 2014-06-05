@@ -1,0 +1,96 @@
+@mixin device_grid($breakpoint, $min_screen_width, $max_screen_width, $unit_width) {
+  @media only screen and (min-width: $min_screen_width) and (max-width: $max_screen_width) {
+
+    #page { width: $unit_width * 6; padding: 0; margin: 0 auto; }
+    .module { padding: 0 $gutter; @extend %one-half-space-after; }
+
+    // Widths for individual elements
+    .one-twelfth-width { width: $unit_width / 2; }
+    .one-sixth-width   { width: $unit_width - $gutters; }
+    .one-third-width   { width: $unit_width * 2; }
+    .one-half-width    { width: $unit_width * 3; }
+    .two-thirds-width  { width: $unit_width * 4; }
+    .five-sixths-width { width: $unit_width * 5; }
+    .full-width        { width: $unit_width * 6; }
+
+    %one-twelfth-width { width: $unit_width / 2; }
+    %one-sixth-width   { width: $unit_width - $gutters; }
+    %one-third-width   { width: $unit_width * 2; }
+    %one-half-width    { width: $unit_width * 3; }
+    %two-thirds-width  { width: $unit_width * 4; }
+    %five-sixths-width { width: $unit_width * 5; }
+    %full-width        { width: $unit_width * 6; }
+
+    %no-gutters { padding-left: 0 !important; padding-right: 0 !important; }
+    %with-gutters { padding-left: $gutter; padding-right: $gutter; }
+    .with-gutters { padding-left: $gutter; padding-right: $gutter; }
+
+    .one-tenth-space-after  { margin-bottom: 10px; }
+    .one-half-space-after   { margin-bottom: 30px; }
+    .full-space-after       { margin-bottom: 60px; }
+
+    %one-tenth-space-after  { margin-bottom: 10px; }
+    %one-half-space-after   { margin-bottom: 30px; }
+    %full-space-after       { margin-bottom: 60px; }
+
+    .one-tenth-space-before { margin-top: 10px; }
+    .one-half-space-before  { margin-top: 30px; }
+    .full-space-before      { margin-top: 60px; }
+
+    %one-tenth-space-before { margin-top: 10px; }
+    %one-half-space-before  { margin-top: 30px; }
+    %full-space-before      { margin-top: 60px; }
+
+  }
+}
+
+
+// ######################################################################################################
+// ###### LAYOUT ENGINE #################################################################################
+// ######################################################################################################
+
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background: $background;
+}
+
+#page {
+  background: $white;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 0 5px $dark_gray;
+     -moz-box-shadow: 0 0 5px $dark_gray;
+          box-shadow: 0 0 5px $dark_gray;
+}
+
+// Breakpoint: Desktop
+@include device_grid('desk', $desk_min_width, $desk_max_width, $desk_unit_width);
+
+// Breakpoint: Tablet
+@include device_grid('tab', $tab_min_width, $tab_max_width, $tab_unit_width);
+
+
+
+// ######################################################################################################
+// ###### LAYOUT ENGINE #################################################################################
+// ######################################################################################################
+
+
+.inlineblock { @include inlineblock; }
+.whitespacefix { @include whitespacefix; }
+
+.no-gutters { padding-left: 0 !important; padding-right: 0 !important; }
+%no-gutters { padding-left: 0 !important; padding-right: 0 !important; }
+
+// Vertical alignment
+div, ul { vertical-align: top; }
+
+// Show/hide for menu visiblity
+.show { display: block !important; }
+.hide { display: none !important; }
+

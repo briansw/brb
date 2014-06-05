@@ -1,0 +1,96 @@
+.record-form {
+  @extend %full-width;
+
+  .fields {
+    @extend %with-gutters;
+    @extend %one-half-space-after;
+
+    .field {
+      @extend %one-half-space-after;
+    }
+    label { @include inlineblock; @extend %one-sixth-width; @extend %regular; vertical-align: top; }
+
+    .field_with_errors {
+      @include inlineblock;
+    }
+  }
+
+  hr { margin: 50px 0; border: none; height: 1px; background: $gray; }
+
+  .actions {
+    @extend %with-gutters;
+  }
+
+  input[type="text"], input[type="password"] {
+    width: 400px;
+  }
+
+  textarea {
+    max-width: 400px;
+    min-width: 400px;
+    width: 400px;
+  }
+  
+  .multi-select-input,
+  .image-field,
+  .images-field,
+  .rich-text-area {
+    width: 400px;
+    display: inline-block;
+  }
+
+  .image-field img {
+    vertical-align: middle;
+  }
+  
+  .images-field {
+    .image {
+      position: relative;
+      margin-bottom: 10px;
+      
+      .delete {
+        position: absolute;
+        top: 6px;
+        right: 10px;
+      }
+      
+      &.will-destroy {
+        color: red;
+        
+        &::after {
+          content: " will be deleted";
+        }
+        
+        .delete::before {
+          content: "undo "
+        }
+        
+        .delete {
+          color: red;
+        }
+        
+        img {
+          height: 30px;
+          vertical-align: middle;
+        }
+        
+        input {
+          display: none;
+        }
+        
+        background-color: pink;
+        border: 1px solid red;
+        border-radius: 3px;
+      }
+    }
+  }
+  
+  .progress {
+    .bar {
+      height: 5px;
+      background-color: $green;
+      border-radius: 3px;
+    }
+  }
+
+}

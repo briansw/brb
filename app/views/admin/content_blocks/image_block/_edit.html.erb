@@ -1,0 +1,11 @@
+<%= content_block_field.fields_for :image_block do |field| %>
+
+  <div class="field">
+    <%= field.image_field :image %>
+  </div>
+
+  <div class="field">
+    <%= field.rich_text_area :caption, placeholder: 'Caption (optional)', class: 'caption' %>
+  </div>
+
+<% end %>

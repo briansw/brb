@@ -1,0 +1,16 @@
+<div id="content-blocks">
+    
+    <%= f.fields_for :content_blocks, f.object.content_blocks.sort_by(&:position) do |content_block_field| %>
+        <%= render 'admin/content_blocks/edit', f: f, content_block_field: content_block_field %>
+    <% end %>
+
+    <div class="content-block-wrapper base-block">
+        <div id="cloneable-cb-options" class="new-content-block-options">
+          <%= f.new_content_block('New Text Block', 'TextBlock', 'large-button') %>
+          <%= f.new_content_block('New Image Block', 'ImageBlock', 'large-button') %>
+          <%= f.new_content_block('New Slideshow Block', 'SlideshowBlock', 'large-button') %>
+          <%= f.new_content_block('New Video Block', 'VideoBlock', 'large-button') %>
+          <%= f.new_content_block('New Interview Block', 'InterviewBlock', 'large-button') %>
+        </div>
+    </div>
+</div>

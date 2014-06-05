@@ -1,0 +1,15 @@
+<div class="login-module">
+  <%= form_tag [:admin, :login], method: 'POST' do %>
+    <div class="username">
+        <%= text_field_tag(:username_or_email, params[:username_or_email], placeholder: 'Username or email') %>
+    </div>
+
+    <div class="password">
+        <%= password_field_tag(:password, params[:password], placeholder: 'Password') %>
+    </div>
+
+    <div class="submit">
+        <%= submit_tag 'Log In' %>
+    </div>
+  <% end %>
+</div>

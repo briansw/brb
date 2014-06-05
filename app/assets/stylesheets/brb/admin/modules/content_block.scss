@@ -1,0 +1,93 @@
+#content-blocks {
+  position: relative;
+  @extend %one-half-space-before;
+  border-top: 1px solid $gray;
+  padding-top: 25px;
+
+  .rich-text-area { width: 100%; }
+}
+
+.new-content-block-options { margin: 20px 0; }
+
+.content-block, .content-block .slide {
+  position: relative;
+  border: 1px solid $gray;
+  border-radius: 5px;
+  @extend %one-half-space-after;
+  background: $white;
+
+  .field {
+    margin-bottom: 10px !important;
+  }
+
+  input[type="text"] {
+    width: 100%;
+  }
+
+  textarea {
+    width: 100%;
+  }
+
+  .textarea.caption {
+    height: 75px;
+  }
+
+  .actions-wrapper {
+    width: 100%;
+    .actions {
+      height: 40px;
+      background: $light_blue;
+      position: relative;
+      text-align: right;
+      .delete-content-block { @include verticalalign; right: $gutter; }
+      &:hover { cursor: move; }
+      .move {
+        @include verticalalign;
+        left: $gutter;
+        color: $blue;
+        .kind { padding-right: 10px; }
+        .move-block:hover { cursor: pointer; }
+      }
+    }
+  }
+
+  .content {
+    padding: 10px 10px 10px 10px;
+  }
+}
+
+.content-block { @extend %two-thirds-width; }
+
+.content-block .slide {
+  background: $light_blue;
+  input[type="file"] { @include inlineblock; padding: 5px; }
+  width: 100%;
+  margin-bottom: $gutter !important;
+  .actions {
+    height: 30px !important;
+    border-bottom: 1px solid $gray;
+  }
+
+  .textarea.caption { height: 25px; }
+}
+
+.content-block-wrapper.is-deleted {
+  display: none;
+}
+
+.textarea-toolbar {
+  .toolbar-options { @include whitespacefix; }
+  margin-bottom: 5px;
+  a {
+    @include inlineblock;
+    border: 1px solid $gray;
+    border-left: none;
+    padding: 3px 8px;
+    background: $light_gray;
+    &:first-child { border-top-left-radius: 3px; border-bottom-left-radius: 3px; border-left: 1px solid $gray; }
+    &:last-child { border-top-right-radius: 3px; border-bottom-right-radius: 3px; }
+    &.wysihtml5-command-active { background: $gray; border-color: $dark_gray; }
+  }
+
+  .link-field { @extend %one-tenth-space-before; }
+}

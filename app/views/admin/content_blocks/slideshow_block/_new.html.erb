@@ -1,0 +1,5 @@
+<% slideshow_block = content_block.build_slideshow_block %>
+
+<%= content_block_field.fields_for :slideshow_block, slideshow_block do |field| %>
+  <%= render 'admin/content_blocks/slideshow_block/form', f: field %>
+<% end %>

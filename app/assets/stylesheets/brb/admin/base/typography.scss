@@ -1,0 +1,44 @@
+@mixin typeface { font-family: Helvetica, Arial, sans-serif; }
+
+
+@mixin device_type_sizes($breakpoint, $min_screen_width, $max_screen_width, $large_size, $large_leading, $regular_size, $regular_leading, $small_size, $small_leading) {
+  @media only screen and (min-width: $min_screen_width) and (max-width: $max_screen_width) {
+
+    %regular { font-size: $regular_size; line-height: $regular_leading; letter-spacing: 0; }
+    %large   { font-size: $large_size;   line-height: $large_leading; letter-spacing: 0; }
+    %small   { font-size: $small_size;   line-height: $small_leading; letter-spacing: 0; }
+
+    body { @include typeface; @extend %regular; }
+    h1, h2, h3, h4, h5, h6 { @extend %large; margin: 0; padding: 0; }
+    p { margin: 0 0 $regular_leading 0; }
+    p.last-child { margin: 0; }
+  }
+}
+
+
+// ######################################################################################################
+// ###### END MIXINS ####################################################################################
+// ######################################################################################################
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+sup { vertical-align: super; font-size: smaller; line-height: 0; }
+
+ul { list-style: none; list-style-type: none; margin: 0; padding: 0; }
+
+// Breakpoint: Desktop
+@include device_type_sizes(
+  'desk', $desk_min_width, $desk_max_width,
+  $large_size,  $large_leading,
+  $regular_size, $regular_leading,
+  $small_size, $small_leading
+);
+
+// Breakpoint: Tablet
+@include device_type_sizes(
+  'tab', $tab_min_width, $tab_max_width,
+  $large_size,  $large_leading,
+  $regular_size, $regular_leading,
+  $small_size, $small_leading
+);
+
+a { color: $black; text-decoration: none; }

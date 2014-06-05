@@ -1,0 +1,21 @@
+<table>
+    <tr class="table-heading">
+        <th>Actions</th>
+        <%= display_crud_headings_for(resource_class) %>
+    </tr>
+
+    <% collection.each do |resource| %>
+      <tr class="row <%= cycle('odd', 'even') %>">
+        <td class="actions">
+          <%= link_to_delete(resource) %>
+          <%= link_to_edit(resource) %>
+        </td>
+        
+        <% resource.class.crud_headings.each do |heading| %>
+          <td><%= display_record_column(heading, for: resource) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+</table>
+
+<%= paginate collection, remote: true %>

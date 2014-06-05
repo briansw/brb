@@ -1,0 +1,77 @@
+.crud-table {
+  @extend %full-width;
+
+  table {
+    width: 100%;
+  }
+
+  .row {
+    border-bottom: 1px solid $gray;
+    td { padding: $gutter; max-width: 300px; }
+    a { border-bottom: 1px solid $gray; }
+  }
+
+  .odd { background: $light_blue; }
+  .even { background: $lighter_blue; }
+
+  .actions {
+    font-size: 23px;
+    a { margin: 0 10px 0 0; border: none; }
+    .delete:hover { color: $red; }
+    .edit.reverse {
+      @include inlineblock;
+      font-size: 23px;
+      -webkit-transform: scaleX(-1);
+         -moz-transform: scaleX(-1);
+           -o-transform: scaleX(-1);
+              transform: scaleX(-1);
+             -ms-filter: "FlipH";
+                 filter: FlipH;
+
+    }
+    .edit:hover { color: $green; }
+  }
+
+  .table-heading {
+    text-align: left;
+    th { padding: 0 $gutter $gutter $gutter; }
+    .sorter {
+      &.selected { background: $yellow; }
+      &:hover { cursor: pointer; }
+    }
+  }
+
+  .record-status { width: 85px; }
+  .active-marker {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    color: transparent;
+    &.active { background: $green; }
+    &.inactive { background: $red; }
+  }
+
+  .pagination {
+    @extend %one-half-space-before;
+    padding-bottom: 20px;
+    text-align: center;
+    
+    span { 
+      @extend .large-button; 
+      display: inline-block;
+      text-align: center;
+      margin: 0 1px;
+    }
+    
+    .current { 
+      background: $yellow; 
+      font-style: normal; 
+      cursor: default; 
+    }
+    
+    .first, .last {
+      display: none;
+    }
+  }
+
+}

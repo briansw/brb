@@ -1,0 +1,67 @@
+.header-module {
+  &.logging-in { border-top: 12px solid $dark_gray; }
+  @extend %full-width;
+
+  .toolbar {
+    @include whitespacefix;
+    @extend %full-width;
+    background: $light_gray;
+    border-bottom: 10px solid $dark_gray;
+    padding: 10px 0;
+
+    .navigation {
+      vertical-align: middle;
+      @extend %one-half-width;
+      @include inlineblock;
+      @extend %regular;
+      li {
+        @include inlineblock;
+        position: relative;
+        @extend %with-gutters;
+
+      }
+    }
+
+    .project-links {
+      li { padding: 0 0 0 $gutter; }
+      .home {
+        display: block;
+        width: 40px;
+        height: 40px;
+        background: $black;
+        border-radius: 20px;
+        color: transparent;
+        margin: 0;
+        padding: 0;
+      }
+
+      .title {
+        @extend %large;
+        line-height: 0;
+        position: relative;
+        top: 18px;
+      }
+    }
+
+    .user-links {
+      text-align: right;
+    }
+
+  }
+}
+
+.page-header {
+  @extend %full-width;
+  @extend %with-gutters;
+  @extend %one-half-space-before;
+  @extend %one-half-space-after;
+  position: relative;
+  
+  h1 { @include inlineblock; margin-right: $gutter; }
+  
+  #search-form {
+    position: absolute;
+    top: -18px;
+    right: 15px;
+  }
+}

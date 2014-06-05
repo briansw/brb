@@ -1,0 +1,11 @@
+#relationships {
+  @extend %one-half-space-before;
+  border-top: 1px solid $gray;
+  padding-top: 25px;
+  @extend %full-width;
+
+  h2 {
+    @extend %with-gutters;
+    @extend %one-tenth-space-after;
+  }
+}

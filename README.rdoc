@@ -1,3 +1,19 @@
 = Brb
 
-This project rocks and uses MIT-LICENSE.
+Brb is an opinionated, light-weight framework for scaffolding an admin interface for Rails.
+
+Originally extracted from harvarddesignmagazine.org.
+
+= Installation
+
+TODO
+
+`gem 'brb', git: 'git@github.com:briansw/brb.git'`
+
+= Generators
+
+TODO
+
+= Concerns
+
+TODO

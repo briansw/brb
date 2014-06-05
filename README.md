@@ -1,4 +1,4 @@
-= Brb
+# Brb
 
 Brb is an opinionated, light-weight framework for scaffolding an admin interface for Rails. The goal of Brb is to help generate a simple, consistent base to build more complex views using standard Rails conventions.
 
@@ -6,16 +6,16 @@ Brb includes authentication, [Pundit](https://github.com/elabs/pundit)-based aut
 
 Originally extracted from harvarddesignmagazine.org.
 
-= Installation
+# Installation
 
 TODO
 
 `gem 'brb', git: 'git@github.com:briansw/brb.git'`
 
-= Generators
+# Generators
 
 TODO
 
-= Concerns
+# Concerns
 
 TODO

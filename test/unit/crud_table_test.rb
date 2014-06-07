@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'test_helper'
 
 class CRUDDummy
   attr_accessor :name, :last_name
@@ -14,41 +14,45 @@ class CRUDDummy
   include Concerns::CRUDTable
 end
 
-describe Concerns::CRUDTable do
+class CRUDTableTest < ActiveSupport::TestCase
   
-  it "adds headings" do
-    CRUDDummy.has_heading 'Name'
-    expect(CRUDDummy.crud_headings).not_to be_empty
+  teardown do
+    CRUDDummy.crud_headings = []
   end
   
-  it "stores heading shit" do
+  test 'adds headings' do
+    CRUDDummy.has_heading 'Name'
+    assert_not_empty CRUDDummy.crud_headings
+  end
+  
+  test 'stores heading configuration' do
     CRUDDummy.has_heading 'Name', link: :last_name, display: :name, default: true
     heading = CRUDDummy.crud_headings.first
-    expect(heading.title).to eq('Name')
+    assert_equal 'Name', heading.title
   end
   
 end
 
-describe Concerns::CRUDTable::Heading do
+class CRUDTableHeadingTest < ActiveSupport::TestCase
   
-  it "stores label" do
+  test "stores label" do
     heading = Concerns::CRUDTable::Heading.new 'Name', link: :last_name, display: :name, default: true
-    expect(heading.title).not_to be_nil
+    assert_not_nil heading.title
   end
   
-  it "stores link" do
+  test "stores link" do
     heading = Concerns::CRUDTable::Heading.new 'Name', link: :last_name, display: :name, default: true
-    expect(heading.link).not_to be_nil
+    assert_not_nil heading.link
   end
   
-  it "stores default" do
+  test "stores default" do
     heading = Concerns::CRUDTable::Heading.new 'Name', link: :last_name, display: :name, default: true
-    expect(heading.default).not_to be_nil
+    assert_not_nil heading.default
   end
   
-  it "stores display" do
+  test "stores display" do
     heading = Concerns::CRUDTable::Heading.new 'Name', link: :last_name, display: :name, default: true
-    expect(heading.instance_variable_get(:@display)).not_to be_nil
+    assert_not_nil heading.instance_variable_get(:@display)
   end
   
 end

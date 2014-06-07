@@ -34,7 +34,6 @@ Gem::Specification.new do |s|
   s.add_dependency "sass-rails"
 
   s.add_development_dependency "sqlite3"
-  s.add_development_dependency "rspec-rails", "~> 2.14.0"
   s.add_development_dependency "factory_girl_rails", "~> 4.2.1"
 
 end

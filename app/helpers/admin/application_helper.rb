@@ -13,12 +13,12 @@ module Admin::ApplicationHelper
     link_to "Edit", path, html_options
   end
   
-  def display_notice(notice, alert)
-    if notice
-      content_tag(:div, notice, class: 'notice message')
-    else
-      content_tag(:div, alert, class: 'notice error')
-    end
+  def display_notice(notice)
+    content_tag(:div, notice, class: 'notice message') if notice
+  end
+  
+  def display_alert(alert)
+    content_tag(:div, alert, class: 'notice error') if alert
   end
 
   def display_dropdown_selected(name)

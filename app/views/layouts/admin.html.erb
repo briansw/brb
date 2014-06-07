@@ -11,7 +11,8 @@
 
     <div id="page">
       <%= render 'admin/dashboard/navigation' %>
-      <%= display_notice(notice, alert) if notice || alert %>
+      <%= display_notice(notice) %>
+      <%= display_alert(alert) %>
       <%= yield %>
     </div>
     <%= javascript_include_tag 'brb/application' %>

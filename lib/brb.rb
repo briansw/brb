@@ -1,4 +1,7 @@
+require "rails"
+
 require "brb/engine"
+require "brb/rails/routes"
 
 require "carrierwave"
 require "kaminari"

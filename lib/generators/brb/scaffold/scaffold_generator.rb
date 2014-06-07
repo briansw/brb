@@ -1,3 +1,3 @@
-class BlockGenerator < Rails::Generators::NamedBase
+class Brb::ScaffoldGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
 end

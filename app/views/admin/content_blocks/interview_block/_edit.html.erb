@@ -1,9 +1,0 @@
-<%= content_block_field.fields_for :interview_block do |field| %>
-    <div class="field">
-        <%= field.text_field :name, placeholder: 'Full Name/Initials' %>
-    </div>
-
-    <div class="field">
-      <%= field.rich_text_area :body, placeholder: 'Content' %>
-    </div>
-<% end %>

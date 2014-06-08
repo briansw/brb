@@ -1,4 +1,32 @@
 module Admin::ApplicationHelper
+
+  def ordered_adminable_resources
+    adminable_resources.sort_by{ |resource| [resource[:position], resource[:title]] }
+  end
+
+  def adminable_resources
+    resources = []
+    ActiveRecord::Base.connection.tables.each do |model|
+      klass = model.singularize.classify
+      if class_exists?(klass) && klass.constantize.try(:adminable_options).present?
+        if klass.pluralize != klass and klass.singularize == klass
+          pluralized = klass.underscore.pluralize
+        else
+          pluralized = klass.underscore.pluralize + '_index'
+        end
+        klass.constantize.adminable_options[:path] = send("admin_#{pluralized}_path")
+        resources << klass.constantize.adminable_options
+      end
+    end
+    resources
+  end
+
+  def class_exists?(class_name)
+    klass = Module.const_get(class_name)
+    return klass.is_a?(Class)
+  rescue NameError
+    return false
+  end
   
   def admin_edit_link(resource)
     return unless current_user && current_user.active?

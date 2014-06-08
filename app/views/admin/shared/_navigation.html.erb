@@ -1,28 +1,24 @@
 <div class="header-module<%= ' logging-in' unless @current_user %>">
   <% if @current_user %>
-      <div class="toolbar">
-          <ul class="navigation project-links">
-            <li><%= link_to('Home', admin_root_path, class: 'home') %></li>
-            <li><%= link_to('HDM Admin', admin_root_path, class: 'title') %></li>
-            <li>
-              <div class="dropdown-wrapper">
-                  <div class="dropdown-selected"><%= display_dropdown_selected(controller_name) %></div>
-                  <ul class="dropdown-list">
-                    <li><%= display_dropdown_item('Issues', admin_issues_path) %></li>
-                    <%= content_tag(:li, display_dropdown_item('Article Types', admin_article_types_path)) if @current_user.is_sysop? %>
-                    <li><%= display_dropdown_item('Articles', admin_articles_path) %></li>
-                    <li><%= display_dropdown_item('Authors', admin_authors_path) %></li>
-                    <li><%= display_dropdown_item('Users', admin_users_path) %></li>
-                    <li><%= display_dropdown_item('Tags', admin_tags_path) %></li>
-                    <li><%= display_dropdown_item('News', admin_news_index_path) %></li>
-                  </ul>
-              </div>
-            </li>
-          </ul>
-          <ul class="navigation user-links">
-            <li><%= link_to(@current_user.username, edit_admin_user_path(@current_user)) %></li>
-            <li><%= link_to('Log out', admin_logout_path) %></li>
-          </ul>
-      </div>
+    <div class="toolbar">
+      <ul class="navigation project-links">
+        <li><%= link_to('Home', admin_root_path, class: 'home') %></li>
+        <li><%= link_to('HDM Admin', admin_root_path, class: 'title') %></li>
+        <li>
+          <div class="dropdown-wrapper">
+            <div class="dropdown-selected"><%= display_dropdown_selected(controller_name) %></div>
+            <ul class="dropdown-list">
+              <% ordered_adminable_resources.each do |resource| %>
+                <%= content_tag(:li, display_dropdown_item(resource[:title], resource[:path])) %>
+              <% end %>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <ul class="navigation user-links">
+        <li><%= link_to(@current_user.username, edit_admin_user_path(@current_user)) %></li>
+        <li><%= link_to('Log out', admin_logout_path) %></li>
+      </ul>
+    </div>
   <% end %>
 </div>

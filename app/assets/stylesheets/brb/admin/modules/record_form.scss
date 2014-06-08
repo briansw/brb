@@ -1,24 +1,31 @@
 .record-form {
-  @extend %full-width;
+  @extend %c6;
+  @extend %nogutters;
 
   .fields {
-    @extend %with-gutters;
+    @extend %withgutters;
     @extend %one-half-space-after;
 
     .field {
       @extend %one-half-space-after;
     }
-    label { @include inlineblock; @extend %one-sixth-width; @extend %regular; vertical-align: top; }
+    label {
+      @extend %inlineblock;
+      @extend %c1;
+      @extend %regular;
+      vertical-align: top;
+      @extend %nogutters;
+    }
 
     .field_with_errors {
-      @include inlineblock;
+      @extend %inlineblock;
     }
   }
 
   hr { margin: 50px 0; border: none; height: 1px; background: $gray; }
 
   .actions {
-    @extend %with-gutters;
+    @extend %withgutters;
   }
 
   input[type="text"], input[type="password"] {

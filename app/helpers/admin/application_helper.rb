@@ -54,10 +54,12 @@ module Admin::ApplicationHelper
   
   def display_record_column(heading, *args)
     options = args.extract_options!
-    return '' unless options[:for] && options[:for].is_a?(ActiveRecord::Base)
+    record = options.delete(:for)
     
-    column = options[:for].column_for_attribute(heading.link)
-    value = heading.display(options[:for])
+    return '' unless record && record.is_a?(ActiveRecord::Base)
+    
+    column = record.column_for_attribute(heading.link)
+    value = get_row_value_from_heading(heading, record)
     
     return value unless column
     
@@ -66,6 +68,16 @@ module Admin::ApplicationHelper
       display_boolean_marker value
     else
       value
+    end
+  end
+  
+  def get_row_value_from_heading(heading, record)
+    if heading.helper
+      send(heading.helper, record)
+    elsif heading.display
+      record.send(heading.display)
+    else
+      record.send(heading.link)
     end
   end
 

@@ -7,7 +7,10 @@
   .rich-text-area { width: 100%; }
 }
 
-.new-content-block-options { margin: 20px 0; }
+.new-content-block-options {
+  margin: 20px 0;
+  .new-content-block.large-button { margin: 0 2px; }
+}
 
 .content-block, .content-block .slide {
   position: relative;
@@ -56,11 +59,11 @@
   }
 }
 
-.content-block { @extend %two-thirds-width; }
+.content-block { @extend %c4; @extend %nogutters; }
 
 .content-block .slide {
   background: $light_blue;
-  input[type="file"] { @include inlineblock; padding: 5px; }
+  input[type="file"] { @extend %inlineblock; padding: 5px; }
   width: 100%;
   margin-bottom: $gutter !important;
   .actions {
@@ -76,10 +79,11 @@
 }
 
 .textarea-toolbar {
-  .toolbar-options { @include whitespacefix; }
+  .toolbar-options { @extend %whitespacefix; }
   margin-bottom: 5px;
   a {
-    @include inlineblock;
+    @extend %regular;
+    @extend %inlineblock;
     border: 1px solid $gray;
     border-left: none;
     padding: 3px 8px;

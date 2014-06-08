@@ -14,21 +14,15 @@ $green:        #2fcb6d;
 $dark_green:   #2aa95c;
 $yellow:       #ffed2f;
 
+// Unit Width
+$unit_width: 155px;
+
+
 // Spacing
 $gutter:       15px;
 $gutters:      $gutter * 2;
 $hand_gutter:  10px;
 $hand_gutters: $hand_gutter * 2;
-
-// Breakpoint: Desktop min/max widths
-$desk_min_width:  1024px;
-$desk_max_width:  9000000px;
-$desk_unit_width: 160px;
-
-// Breakpoint: Tablet min/max widths
-$tab_min_width:  0;
-$tab_max_width:  1023px;
-$tab_unit_width: 128px;
 
 // Type sizes
 $large_size:      30px;
@@ -38,16 +32,24 @@ $regular_leading: 16px;
 $small_size:      10px;
 $small_leading:   12px;
 
+// Fonts
+$sans: Helvetica, Arial, sans-serif;
+$serif: Times, Times New Roman, serif;
 
-// ####################################
-// ##### END ##########################
-// ####################################
 
 
-p, a, h1, h2, h3, h4, h5, h6, .display-message, .caption, .summary { letter-spacing: normal; }
-@mixin displaynone { display: none !important; }
-@mixin inlineblock { @extend %regular; display: inline-block; *display: inline; zoom: 1; letter-spacing: normal; }
-@mixin whitespacefix { font-size: 0; line-height: 0; letter-spacing: -4px; }
+%whitespacefix {
+  font-size: 0;
+  line-height: 0;
+  letter-spacing: -4px;
+}
+
+%inlineblock {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  letter-spacing: 0;
+}
 
 // Links
 @mixin underline { border-bottom: 1px solid $black; }

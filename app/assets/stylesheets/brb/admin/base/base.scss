@@ -4,12 +4,33 @@
           box-sizing: border-box;
 }
 
-* {
-    outline: none;
-}
+* { outline: none; }
+
+div, ul { vertical-align: top; }
+.show { display: block !important; }
+.hide { display: none !important; }
+
 
 body {
   margin: 0;
   padding: 0;
   position: relative;
+  @include typeface($sans);
+  @extend %regular;
+  background: $background;
+}
+
+#page {
+  background: $white;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 0 5px $dark_gray;
+     -moz-box-shadow: 0 0 5px $dark_gray;
+          box-shadow: 0 0 5px $dark_gray;
+  @extend %c6;
+  @extend %nogutters;
+}
+
+.module {
+  padding: 0 $gutter;
+  @extend %one-half-space-after;
 }

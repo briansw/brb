@@ -41,12 +41,12 @@ input[type="button"], input[type="submit"], input[type="file"] {
 }
 
 input[type="file"] {
-  @include inlineblock; padding: 5px;
+  @extend %inlineblock; padding: 5px;
 }
 
 
 .notice {
-  @extend %full-width;
+  @extend %c6;
   @extend %one-tenth-space-after;
   position: relative;
   padding: 20px;

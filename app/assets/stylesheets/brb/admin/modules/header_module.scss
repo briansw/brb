@@ -1,23 +1,25 @@
 .header-module {
   &.logging-in { border-top: 12px solid $dark_gray; }
-  @extend %full-width;
+  @extend %c6;
+  @extend %nogutters;
 
   .toolbar {
-    @include whitespacefix;
-    @extend %full-width;
+    @extend %whitespacefix;
+    @extend %c6;
     background: $light_gray;
     border-bottom: 10px solid $dark_gray;
     padding: 10px 0;
 
     .navigation {
       vertical-align: middle;
-      @extend %one-half-width;
-      @include inlineblock;
+      @extend %c3;
+      @extend %inlineblock;
       @extend %regular;
+      @extend %nogutters;
       li {
-        @include inlineblock;
+        @extend %inlineblock;
         position: relative;
-        @extend %with-gutters;
+        @extend %withgutters;
 
       }
     }
@@ -51,13 +53,13 @@
 }
 
 .page-header {
-  @extend %full-width;
-  @extend %with-gutters;
+  @extend %c6;
+  @extend %withgutters;
   @extend %one-half-space-before;
   @extend %one-half-space-after;
   position: relative;
   
-  h1 { @include inlineblock; margin-right: $gutter; }
+  h1 { @extend %inlineblock; margin-right: $gutter; }
   
   #search-form {
     position: absolute;

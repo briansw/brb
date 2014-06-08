@@ -4,7 +4,7 @@ Brb is an opinionated, light-weight framework for scaffolding an admin interface
 
 Brb includes authentication, [Pundit](https://github.com/elabs/pundit)-based authorization, and some form helpers.
 
-Originally extracted from harvarddesignmagazine.org.
+Originally extracted from harvarddesignmagazine.org and building--block.com.
 
 # Installation
 

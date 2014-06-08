@@ -1,5 +1,6 @@
 .crud-table {
-  @extend %full-width;
+  @extend %c6;
+  @extend %nogutters;
 
   table {
     width: 100%;
@@ -15,11 +16,12 @@
   .even { background: $lighter_blue; }
 
   .actions {
+    min-width: 95px;
     font-size: 23px;
     a { margin: 0 10px 0 0; border: none; }
     .delete:hover { color: $red; }
     .edit.reverse {
-      @include inlineblock;
+      @extend %inlineblock;
       font-size: 23px;
       -webkit-transform: scaleX(-1);
          -moz-transform: scaleX(-1);

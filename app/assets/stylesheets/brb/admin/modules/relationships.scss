@@ -2,10 +2,11 @@
   @extend %one-half-space-before;
   border-top: 1px solid $gray;
   padding-top: 25px;
-  @extend %full-width;
+  @extend %c6;
+  @extend %nogutters;
 
   h2 {
-    @extend %with-gutters;
+    @extend %withgutters;
     @extend %one-tenth-space-after;
   }
 }

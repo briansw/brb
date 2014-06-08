@@ -167,7 +167,7 @@ class Admin::FormBuilder < ActionView::Helpers::FormBuilder
   end
   
   def actions
-    content_tag :div, class: 'with-gutters', id: 'submit-with-content-blocks' do
+    content_tag :div, class: 'withgutters', id: 'submit-with-content-blocks' do
       concat submit(data: {disable_with: 'Saving...'})
       concat cancel_link
     end
@@ -204,13 +204,24 @@ class Admin::FormBuilder < ActionView::Helpers::FormBuilder
     link_to(label, '#', data: { id: id, type: 'Slide', fields: fields.gsub('\n', '') }, class: 'new-slideshow-slide small-button')
   end
   
-  def new_content_block(name, block_type, button_type)
+  def new_content_block(name, block_type, options = {})
+    options.reverse_merge! class: 'large-button'
+    
     content_block = @object.send(:content_blocks).new
     id = content_block.object_id
     fields = fields_for :content_blocks, content_block do |content_block_field|
       render('admin/content_blocks/new', id: id, block_type: block_type, content_block: content_block, content_block_field: content_block_field, f: self, content_block_id: id)
     end
-    link_to(name, '#', data: { id: id, type: block_type, fields: fields.gsub('\n', '') }, class: "new-content-block #{button_type}")
+    
+    link_to(name, '#', data: { id: id, type: block_type, fields: fields.gsub('\n', '') }, class: "new-content-block #{options[:class]}")
+  end
+  
+  def new_content_block_buttons
+    content_tag :div, class: 'content-block-buttons' do
+      resource.available_content_blocks.each do |cb|
+        concat new_content_block("New #{cb}", cb)
+      end
+    end
   end
   
   protected

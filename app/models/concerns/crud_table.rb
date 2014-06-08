@@ -11,39 +11,39 @@ module Concerns::CRUDTable
   
   module ClassMethods
     def filter_crud_table(sort, direction, page, assoc_column)
-      true_heading = crud_headings.any? do |crud_heading| 
-        crud_heading.link == sort
-      end
-
-      if sort && direction && true_heading
+      if sort && direction && heading_exists?(sort)
+        sort = sort.downcase
+        direction = direction.to_sym
+        direction = :asc unless direction == :asc || direction == :desc
         if assoc_column
-          filter_with_assoc(sort, direction, page, assoc_column)
+          page(page).filter_with_assoc(sort, direction, assoc_column)
         else
-          filter_without_assoc(sort, direction, page)
+          page(page).filter_without_assoc(sort, direction)
         end
       else
-        sort = crud_headings.select do |crud_heading| 
-          crud_heading.default
-        end.first.link + ' ASC'
+        sort = default_heading.link + ' ASC'
         page(page).order(sort)
       end
     end
     alias_method :filter_table, :filter_crud_table
-
-    def filter_with_assoc(sort, direction, page, assoc_column)
-      sort = sort.downcase
-      direction = direction.upcase
-      direction = 'ASC' unless direction == 'ASC' || direction == 'DESC'
-      order = sort.pluralize + '.' + assoc_column + ' ' + direction
-      page(page).includes(sort.to_sym).order(order)
+    
+    def default_heading
+      crud_headings.find(&:default) || crud_headings.first
+    end
+    
+    def heading_exists?(sort)
+      crud_headings.any? do |heading| 
+        heading.link == sort
+      end
+    end
+    
+    def filter_with_assoc(sort, direction, assoc_column)
+      order = "#{sort.pluralize}.#{assoc_column} #{direction}"
+      includes(sort.to_sym).order(order)
     end
 
-    def filter_without_assoc(sort, direction, page)
-      sort = sort.downcase
-      direction = direction.upcase
-      direction = 'ASC' unless direction == 'ASC' || direction == 'DESC'
-      sort += ' ' + direction
-      page(page).order(sort)
+    def filter_without_assoc(sort, direction)
+      order(sort => direction)
     end
 
     def has_heading(*args)
@@ -55,20 +55,20 @@ module Concerns::CRUDTable
   end
   
   class Heading
-    attr_accessor :title, :link, :default, :parent, :assoc_column
+    attr_accessor :title, :link, :default, :parent, :assoc_column, 
+      :helper, :display
 
     def initialize(*args)
       options = args.extract_options!
+      options.reverse_merge! default: false
+      
       @title = args.shift
       @link = options[:link]
-      @default = options[:default] || false
+      @default = options[:default]
       @parent = options[:parent]
-      @display = options[:display]
       @assoc_column = options[:assoc_column]
-    end
-
-    def display(record)
-      @display.present? ? record.send(@display) : record.send(@link)
+      @helper = options[:helper]
+      @display = options[:display]
     end
   end
   

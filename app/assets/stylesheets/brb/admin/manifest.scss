@@ -1,9 +1,9 @@
+@import "brb/admin/base/reset";
 @import "brb/admin/base/variables_and_extends";
-@import "shared/reset";
 @import "brb/admin/base/typography";
 @import "brb/admin/base/ui";
-@import "brb/admin/base/base";
 @import "brb/admin/base/layout";
+@import "brb/admin/base/base";
 
 @import "brb/admin/modules/login_module";
 @import "brb/admin/modules/header_module";

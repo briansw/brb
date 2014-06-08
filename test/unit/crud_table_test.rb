@@ -36,23 +36,23 @@ end
 class CRUDTableHeadingTest < ActiveSupport::TestCase
   
   test "stores label" do
-    heading = Concerns::CRUDTable::Heading.new 'Name', link: :last_name, display: :name, default: true
+    heading = Concerns::CRUDTable::Heading.new 'Name', link: :last_name, helper: :name, default: true
     assert_not_nil heading.title
   end
   
   test "stores link" do
-    heading = Concerns::CRUDTable::Heading.new 'Name', link: :last_name, display: :name, default: true
+    heading = Concerns::CRUDTable::Heading.new 'Name', link: :last_name, helper: :name, default: true
     assert_not_nil heading.link
   end
   
   test "stores default" do
-    heading = Concerns::CRUDTable::Heading.new 'Name', link: :last_name, display: :name, default: true
+    heading = Concerns::CRUDTable::Heading.new 'Name', link: :last_name, helper: :name, default: true
     assert_not_nil heading.default
   end
   
-  test "stores display" do
-    heading = Concerns::CRUDTable::Heading.new 'Name', link: :last_name, display: :name, default: true
-    assert_not_nil heading.instance_variable_get(:@display)
+  test "stores helper" do
+    heading = Concerns::CRUDTable::Heading.new 'Name', link: :last_name, helper: :name, default: true
+    assert_not_nil heading.instance_variable_get(:@helper)
   end
   
 end

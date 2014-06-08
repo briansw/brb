@@ -1,10 +1,6 @@
 <div class="content-block-wrapper <%= "is-deleted" if content_block_field.object.marked_for_destruction? %>" id="content-block-<%= content_block_field.object_id %>-wrapper">
     <div class="new-content-block-options">
-      <%= f.new_content_block('New Text Block', 'TextBlock', 'large-button') %>
-      <%= f.new_content_block('New Image Block', 'ImageBlock', 'large-button') %>
-      <%= f.new_content_block('New Slideshow Block', 'SlideshowBlock', 'large-button') %>
-      <%= f.new_content_block('New Video Block', 'VideoBlock', 'large-button') %>
-      <%= f.new_content_block('New Interview Block', 'InterviewBlock', 'large-button') %>
+      <%= f.new_content_block_buttons %>
     </div>
 
     <div id="content-block-<%= content_block_field.object_id %>" class="content-block">
@@ -19,7 +15,10 @@
         <%= content_block_field.hidden_field :position, class: 'position' %>
         <%= content_block_field.destroy_field %>
         
-        <%= render "admin/content_blocks/#{content_block_field.object.block_type.underscore}/edit", content_block_id: content_block_field.object_id, content_block_field: content_block_field %>
+
+        <%= content_block_field.fields_for content_block_field.object.block_type.underscore.to_sym do |field| %>
+          <%= render "admin/content_blocks/#{content_block_field.object.block_type.underscore}/form", field: field %>
+        <% end %>
 
       </div>
 

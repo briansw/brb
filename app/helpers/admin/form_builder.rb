@@ -130,7 +130,12 @@ class Admin::FormBuilder < ActionView::Helpers::FormBuilder
   
   def image_attachment(image = nil)
     image ||= @object
-    image_tag(image.attachment_url(:admin_thumb), class: 'image-attachment')
+    if image.attachment_url && image.attachment_url.split(//).last(3).join == 'pdf'
+      image_tag('pdf-icon.png', width: 37, height: 50) +
+      content_tag(:span, image.attachment_url, class: 'pdf-attachment')
+    else
+      image_tag(image.attachment_url(:admin_thumb), class: 'image-attachment')
+    end
   end
   
   def image_destroy_field(options = {})

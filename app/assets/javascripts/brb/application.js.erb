@@ -112,7 +112,7 @@ jQuery.fn.extend({
             $(this).createRichTextArea();
         } else {
             $(this).find('.textarea').createRichTextArea();
-        };
+        }
         return $(this);
     },
     
@@ -140,7 +140,7 @@ jQuery.fn.extend({
                 $image = $field.find('img'),
                 multiple = typeof $input.data('multiple') !== 'undefined',
                 progressTemplate = $field.find('.progress-template').text();
-            
+
             var addFile = function(e, data) {
                 data.context = $(tmpl(progressTemplate, data.files[0]));
                 data.context.prependTo($field);
@@ -148,40 +148,57 @@ jQuery.fn.extend({
                     $image.hide();
                 }
                 data.submit();
-            }
-            
+            };
+
             var uploadProgress = function(e, data) {
                 $('input[type="submit"]').attr('disabled','disabled');
 
                 var progress = parseInt(data.loaded / data.total * 100);
                 $(data.context).find('.bar').css('width', progress + '%');
-            }
+            };
             
-            var uploadDone = function(e, data) {
-                $('input[type="submit"]').removeAttr('disabled');
-                
-                $(data.context).fadeOut(1000);
-                
-                if (multiple) {
-                    var t = $input.data('template');
-                    var id = $input.data('replacement-id');
-                    var $newImage = $(t.replace(new RegExp(id, 'g'), new Date().getTime()));
-                    $newImage.find('img').attr('src', data.result.attachment.admin_thumb.url);
-                    $newImage.find('.image-id').val(data.result.id);
-                    $field.find('.images').append($newImage);
-                } else {
-                    if (!$image.length) {
-                        $image = $('<img>').prependTo($field);
-                    }
+          var uploadDone = function (e, data) {
+            $('input[type="submit"]').removeAttr('disabled');
 
-                    $image.attr('src', data.result.attachment.admin_thumb.url).show();
-                    $field.find('.image-id').val(data.result.id);
-                };
+            $(data.context).fadeOut(1000);
+
+            if (multiple) {
+              var t  = $input.data('template'),
+                  id = $input.data('replacement-id'),
+                  $newImage = $(t.replace(new RegExp(id, 'g'), new Date().getTime()));
+
+              $newImage.find('img').attr('src', data.result.attachment.admin_thumb.url);
+              $newImage.find('.image-id').val(data.result.id);
+              $field.find('.images').append($newImage);
+
+            } else {
+              var file_path        = data.result.attachment.url,
+                  file_name_length = file_path.lastIndexOf('/') + 1,
+                  file_name        = file_path.substr(file_name_length),
+                  file_type        = file_name.substr(file_name.length - 3).toLowerCase(),
+                  image_path;
+
+              $('.pdf-attachment').remove();
+
+              if (file_type === 'pdf') {
+                image_path = '<%= asset_path('brb/pdf-icon.png') %>';
+                $('<span class="pdf-attachment">' + file_name + '</span>').prependTo($field);
+              } else {
+                image_path = data.result.attachment.admin_thumb.url;
+              }
+
+              if (!$image.length) {
+                $image = $('<img>').prependTo($field);
+              }
+
+              $image.attr('src', image_path).show();
+              $field.find('.image-id').val(data.result.id);
             }
+          };
             
             var uploadError = function(e, data) {
                 console.log('upload error', data);
-            }
+            };
             
             $input.fileupload({
                 dropZone: $field,
@@ -240,7 +257,7 @@ jQuery.fn.extend({
             editor.formatValue = function(){
                 value = this.getValue();
                 this.setValue(value.replace(/<p>\s*<br\/?>\s*<\/p>/g, ''));
-            }
+            };
 
             editor.on("load", function(){
                 $(this.composer.iframe).wysihtml5_size_matters();

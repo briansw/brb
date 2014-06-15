@@ -180,15 +180,15 @@ jQuery.fn.extend({
 
               $('.pdf-attachment').remove();
 
-              if (file_type === 'pdf') {
-                image_path = '<%= asset_path('brb/pdf-icon.png') %>';
-                $('<span class="pdf-attachment">' + file_name + '</span>').prependTo($field);
-              } else {
-                image_path = data.result.attachment.admin_thumb.url;
+              if (!$image.length) {
+                $image = $('<img class="image-attachment">').prependTo($field);
               }
 
-              if (!$image.length) {
-                $image = $('<img>').prependTo($field);
+              if (file_type === 'pdf') {
+                image_path = '<%= asset_path('brb/pdf-icon.png') %>';
+                $('<div class="pdf-attachment">' + file_name + '</span>').insertAfter($image);
+              } else {
+                image_path = data.result.attachment.admin_thumb.url;
               }
 
               $image.attr('src', image_path).show();

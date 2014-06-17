@@ -3,7 +3,7 @@ module Concerns::IsPositionable
 
   included do
     scope :positioned, -> { order(:position) }
-    before_save :set_positions
+    after_save :set_positions
   end
 
 

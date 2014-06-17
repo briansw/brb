@@ -9,7 +9,7 @@ module Concerns::IsPositionable
 
   def set_positions
     records = self.class.all.active.positioned.to_a.reject!{ |record| record == self }
-    index = self.position - 1
+    index = self.position - 1 < 0 ? 0 : self.position - 1
     records.insert(index, self).compact!
 
     records.each_with_index do |record, x|

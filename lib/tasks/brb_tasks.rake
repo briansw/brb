@@ -1,4 +1,6 @@
-# desc "Explaining what the task does"
-# task :brb do
-#   # Task goes here
-# end
+namespace :brb do
+  desc 'Initialize Brb'
+  task :init do
+    # Task goes here
+  end
+end

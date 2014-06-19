@@ -12,7 +12,19 @@ class Admin::UsersController < Admin::ApplicationController
         :is_sysop,
         :password,
         :password_confirmation,
-        :active
+        :active,
+        image_attributes
       )
+    end
+    
+    def image_attributes
+      {
+        portrait_attributes: [
+          :id,
+          :attachment,
+          :attachment_cache,
+          :_destroy
+        ]
+      }
     end
 end

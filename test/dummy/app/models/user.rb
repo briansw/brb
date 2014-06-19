@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include Concerns::Adminable
   include Concerns::CRUDTable
+  include Concerns::HasImage
 
   validates_presence_of :first_name
   validates_presence_of :last_name
@@ -15,15 +16,13 @@ class User < ActiveRecord::Base
   has_heading 'Username', link: 'username'
   has_heading 'Email', link: 'email'
   has_heading 'Active', link: 'active'
-
+  
   adminable position: 7
+  
+  has_image :portrait
 
   def name
     "#{first_name} #{last_name}"
-  end
-
-  def self.per_page
-    self.per_page = 10
   end
 
 end

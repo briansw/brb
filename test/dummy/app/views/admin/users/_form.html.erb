@@ -29,6 +29,11 @@
 </div>
 
 <div class="field">
+  <%= f.label :portrait %>
+  <%= f.image_field :portrait %>
+</div>
+
+<div class="field">
   <%= f.label :is_admin, label: 'Grant Admin Privileges' %>
   <%= f.check_box :is_admin %>
 </div>

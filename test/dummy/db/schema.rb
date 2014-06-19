@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131027190533) do
+ActiveRecord::Schema.define(version: 20131027190535) do
+
+  create_table "content_blocks", force: true do |t|
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.string   "block_type"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "content_blocks", ["parent_type", "parent_id", "block_type"], name: "index_content_blocks_on_many_fields"
+
+  create_table "images", force: true do |t|
+    t.string   "attachment"
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "relationship_name"
+    t.text     "caption"
+  end
+
+  add_index "images", ["parent_id", "parent_type"], name: "index_images_on_parent_id_and_parent_type"
 
   create_table "users", force: true do |t|
     t.string   "first_name"

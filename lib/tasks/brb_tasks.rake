@@ -1,6 +1,6 @@
 namespace :brb do
   desc 'Initialize Brb'
   task :init do
-    # Task goes here
+    puts 'hello world'
   end
 end

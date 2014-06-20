@@ -8,8 +8,6 @@ Originally extracted from [harvarddesignmagazine.org](http://harvarddesignmagazi
 
 # Installation
 
-TODO
-
 `gem 'brb', git: 'git@github.com:briansw/brb.git'`
 
 # Developing Brb
@@ -18,13 +16,12 @@ Clone the Brb repo to your local machine:
 
 ```git clone git@github.com:briansw/brb.git```
 
-In a shell ```cd``` to the host app's folder and write:
+In a shell `cd` to the host app's folder and write:
 
- ```
- bundle config local.brb /path/to/brb
- bundle config disable_local_branch_check true
- ```
-
+```
+bundle config local.brb /path/to/brb
+bundle config disable_local_branch_check true
+```
 
 # Generators
 
@@ -33,3 +30,9 @@ TODO
 # Concerns
 
 TODO
+
+# Misc.
+
+The dropdown menu is ordered based on the order of routes added with `admin_for`.
+
+The `Adminable` concern defines a method `self.to_title` which is responsible for displaying the name of the resource around the admin area.

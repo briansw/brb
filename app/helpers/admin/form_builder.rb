@@ -244,4 +244,26 @@ class Admin::FormBuilder < ActionView::Helpers::FormBuilder
     end
   end
   
+  private
+  
+  def submit_default_value
+    object = convert_to_model(@object)
+    key    = object ? (object.persisted? ? :update : :create) : :submit
+
+    model = if object.class.respond_to?(:to_title)
+      object.class.to_title
+    elsif object.class.respond_to?(:model_name)
+      object.class.model_name.human
+    else
+      @object_name.to_s.humanize
+    end
+
+    defaults = []
+    defaults << :"helpers.submit.#{object_name}.#{key}"
+    defaults << :"helpers.submit.#{key}"
+    defaults << "#{key.to_s.humanize} #{model}"
+
+    I18n.t(defaults.shift, model: model, default: defaults)
+  end
+  
 end

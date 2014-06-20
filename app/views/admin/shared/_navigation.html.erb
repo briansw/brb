@@ -6,7 +6,7 @@
             <li>
               <div class="dropdown-wrapper">
                   <div class="dropdown-selected">
-                    <%= resource_class.to_title %>
+                    <%= resource_class.to_title.pluralize %>
                   </div>
                   <ul class="dropdown-list">
                     <% Brb::Engine.admin_classes.each do |klass| %>

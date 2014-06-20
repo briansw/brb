@@ -25,7 +25,7 @@ module Admin::ApplicationHelper
     return unless policy(klass).index?
     class_to_use = current_page?(controller: controller_name) ? 'selected' : 'link'
     content_tag :li do
-      link_to(klass.to_title, polymorphic_path([:admin, klass]), class: class_to_use)
+      link_to(klass.to_title.pluralize, polymorphic_path([:admin, klass]), class: class_to_use)
     end
   end
 
@@ -140,7 +140,7 @@ module Admin::ApplicationHelper
   end
   
   def link_to_new
-    link_to("New #{resource_instance_name.to_s.titleize}", new_resource_path, class: 'large-button action') if policy(resource_class).new?
+    link_to("New #{resource_class.to_title}", new_resource_path, class: 'large-button action') if policy(resource_class).new?
   end
   
   def link_to_delete(model)

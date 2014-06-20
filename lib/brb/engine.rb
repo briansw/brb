@@ -8,5 +8,9 @@ module Brb
       g.helper false
     end
     
+    config.to_prepare do
+      Brb.adminable_routes = []
+    end
+    
   end
 end

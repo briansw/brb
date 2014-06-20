@@ -18,13 +18,21 @@ class Admin::UsersController < Admin::ApplicationController
     end
     
     def image_attributes
-      {
+      [{
         portrait_attributes: [
           :id,
           :attachment,
           :attachment_cache,
           :_destroy
         ]
-      }
+      },
+      {
+        baseball_cards_attributes: [
+          :id,
+          :attachment,
+          :attachment_cache,
+          :_destroy
+        ]
+      }]
     end
 end

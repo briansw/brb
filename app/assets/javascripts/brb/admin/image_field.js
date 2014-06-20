@@ -1,6 +1,6 @@
 $(function(){
   
-  $('.images-field').on('click', '.delete', function(e){
+  $('.images-field, .image-field').on('click', '.delete', function(e){
     e.preventDefault();
     $(this).parents('.image').toggleDestroy();
   })

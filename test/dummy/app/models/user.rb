@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   is_adminable position: 7
   
   has_image :portrait
+  has_images :baseball_cards
 
   def name
     "#{first_name} #{last_name}"

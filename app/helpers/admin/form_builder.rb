@@ -62,6 +62,7 @@ class Admin::FormBuilder < ActionView::Helpers::FormBuilder
       image_element = content_tag(:div, class: 'image') do
         concat image_attachment(image) unless image.new_record?
         concat(fields_for(method, image) do |fields| 
+          concat fields.image_destroy_field
           concat fields.file_field(:attachment, data: {
             url: admin_images_path(format: :json)
           })

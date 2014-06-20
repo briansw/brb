@@ -1,5 +1,6 @@
 require "rails"
 
+require "brb/version"
 require "brb/engine"
 require "brb/rails/routes"
 

@@ -13,7 +13,7 @@ module Concerns::HasContentBlocks
 
   module ClassMethods
     def has_content_block(name)
-      self.available_content_blocks << name
+      self.available_content_blocks << name.to_s.classify
     end
   end
   

@@ -19,7 +19,4 @@ require "selectize-rails"
 require "sass-rails"
 
 module Brb
-  mattr_accessor :adminable_routes do
-    []
-  end
 end

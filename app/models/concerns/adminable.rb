@@ -8,19 +8,12 @@ module Concerns::Adminable
   end
 
   module ClassMethods
-    def is_adminable
-      options = {}
-      options[:title] = self.pluralized_path(self.to_s)
-      options[:path] = ''
+    def is_adminable(options = {})
       self.adminable_options = options
     end
-
-    def pluralized_path(klass)
-      if klass.pluralize != klass and klass.singularize == klass
-        klass.underscore.pluralize
-      else
-        klass.underscore.pluralize + '_index'
-      end
+    
+    def to_title
+      self.name.titleize
     end
   end
 

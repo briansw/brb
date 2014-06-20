@@ -1,19 +1,16 @@
-<div class="header-module<%= ' logging-in' unless @current_user %>">
+<div class="header-module <%= 'logging-in' unless @current_user %>">
   <% if @current_user %>
       <div class="toolbar">
           <ul class="navigation project-links">
             <li><%= link_to('Home', admin_root_path, class: 'home') %></li>
             <li>
               <div class="dropdown-wrapper">
-                  <div class="dropdown-selected"><%= display_dropdown_selected(controller_name) %></div>
+                  <div class="dropdown-selected">
+                    <%= resource_class.to_title %>
+                  </div>
                   <ul class="dropdown-list">
-                    <% adminable_resources.each do |resource| %>
-                      <% if resource[:sysop_only] %>
-                        <%= content_tag(:li, display_dropdown_item(resource[:title].capitalize, resource[:path])) if @current_user.is_sysop? %>
-                      <% else %>
-                        <%= content_tag(:li, display_dropdown_item(resource[:title].capitalize, resource[:path])) %>
-                      <% end %>
-
+                    <% Brb::Engine.admin_classes.each do |klass| %>
+                      <%= dropdown_item(klass) %>
                     <% end %>
                   </ul>
               </div>

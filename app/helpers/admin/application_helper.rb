@@ -1,25 +1,5 @@
 module Admin::ApplicationHelper
 
-  def adminable_resources
-    resources = []
-    Brb.adminable_routes.each do |model|
-      model_class = model.to_s.singularize.classify
-      if model_class.constantize.try(:adminable_options).present?
-        model_class.constantize.adminable_options[:path] = send("admin_#{pluralized_path(model_class)}_path")
-        resources << model_class.constantize.adminable_options
-      end
-    end
-    resources
-  end
-
-  def pluralized_path(klass)
-    if klass.pluralize != klass and klass.singularize == klass
-      klass.underscore.pluralize
-    else
-      klass.underscore.pluralize + '_index'
-    end
-  end
-
   def admin_edit_link(resource)
     return unless current_user && current_user.active?
     path = polymorphic_path([:admin, resource.class.name.downcase], id: resource.id, action: :edit)
@@ -41,13 +21,11 @@ module Admin::ApplicationHelper
     content_tag(:div, alert, class: 'notice error') if alert
   end
 
-  def display_dropdown_selected(name)
-    name.titleize
-  end
-
-  def display_dropdown_item(name, url)
-    class_to_use = controller_name.titleize == name ? 'selected' : 'link'
-    link_to(name, url, class: class_to_use)
+  def dropdown_item(klass)
+    class_to_use = current_page?(controller: controller_name) ? 'selected' : 'link'
+    content_tag :li do
+      link_to(klass.to_title, polymorphic_path([:admin, klass]), class: class_to_use)
+    end
   end
 
   def display_boolean_marker(active)

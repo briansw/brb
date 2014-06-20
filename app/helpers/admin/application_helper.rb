@@ -22,6 +22,7 @@ module Admin::ApplicationHelper
   end
 
   def dropdown_item(klass)
+    return unless policy(klass).index?
     class_to_use = current_page?(controller: controller_name) ? 'selected' : 'link'
     content_tag :li do
       link_to(klass.to_title, polymorphic_path([:admin, klass]), class: class_to_use)

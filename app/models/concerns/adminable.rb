@@ -3,7 +3,7 @@ module Concerns::Adminable
 
   included do
     cattr_accessor :adminable_options do
-      []
+      Hash.new
     end
   end
 

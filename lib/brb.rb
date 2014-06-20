@@ -3,6 +3,8 @@ require "rails"
 require "brb/version"
 require "brb/engine"
 require "brb/rails/routes"
+require "brb/model/basic"
+require "brb/model/full"
 
 require "carrierwave"
 require "kaminari"

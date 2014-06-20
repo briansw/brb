@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
-  include Concerns::Adminable
-  include Concerns::CRUDTable
-  include Concerns::HasImage
+  include Brb::Model::Full
 
   validates_presence_of :first_name
   validates_presence_of :last_name

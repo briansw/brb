@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'generators_test_helper'
 require 'generators/brb/scaffold/scaffold_generator'
 
 class Brb::ScaffoldGeneratorTest < Rails::Generators::TestCase

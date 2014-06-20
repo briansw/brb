@@ -1,4 +1,4 @@
-class AttachmentUploader < CarrierWave::Uploader::Base
+class Admin::AttachmentUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   storage :file

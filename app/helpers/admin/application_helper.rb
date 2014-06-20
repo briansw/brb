@@ -2,14 +2,14 @@ module Admin::ApplicationHelper
 
   def adminable_resources
     resources = []
-    ActiveRecord::Base.connection.tables.each do |model|
-      klass = model.singularize.classify
-      if class_exists?(klass) && klass.constantize.try(:adminable_options).present?
-        klass.constantize.adminable_options[:path] = send("admin_#{pluralized_path(klass)}_path")
-        resources << klass.constantize.adminable_options
+    Brb.adminable_routes.each do |model|
+      model_class = model.to_s.singularize.classify
+      if model_class.constantize.try(:adminable_options).present?
+        model_class.constantize.adminable_options[:path] = send("admin_#{pluralized_path(model_class)}_path")
+        resources << model_class.constantize.adminable_options
       end
     end
-    resources.sort_by{ |resource| [resource[:position], resource[:title]] }
+    resources
   end
 
   def pluralized_path(klass)
@@ -20,13 +20,6 @@ module Admin::ApplicationHelper
     end
   end
 
-  def class_exists?(class_name)
-    klass = Module.const_get(class_name)
-    return klass.is_a?(Class)
-  rescue NameError
-    return false
-  end
-  
   def admin_edit_link(resource)
     return unless current_user && current_user.active?
     path = polymorphic_path([:admin, resource.class.name.downcase], id: resource.id, action: :edit)

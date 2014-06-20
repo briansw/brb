@@ -13,6 +13,7 @@ module ActionDispatch::Routing
       resources.map!(&:to_sym)
       
       resources.each do |resource|
+        Brb.adminable_routes << resource
         namespace :admin do
           self.resources(resource) do
             # TODO: Only load this when a model has the taggable concern

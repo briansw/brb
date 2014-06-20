@@ -9,9 +9,9 @@
                   <ul class="dropdown-list">
                     <% adminable_resources.each do |resource| %>
                       <% if resource[:sysop_only] %>
-                        <%= content_tag(:li, display_dropdown_item(resource[:title], resource[:path])) if @current_user.is_sysop? %>
+                        <%= content_tag(:li, display_dropdown_item(resource[:title].capitalize, resource[:path])) if @current_user.is_sysop? %>
                       <% else %>
-                        <%= content_tag(:li, display_dropdown_item(resource[:title], resource[:path])) %>
+                        <%= content_tag(:li, display_dropdown_item(resource[:title].capitalize, resource[:path])) %>
                       <% end %>
 
                     <% end %>

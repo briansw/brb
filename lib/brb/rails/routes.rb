@@ -10,10 +10,11 @@ module ActionDispatch::Routing
     #
     def admin_for(*resources)
       options = resources.extract_options!
+      options.reverse_merge! private: false
       resources.map!(&:to_sym)
       
       resources.each do |resource|
-        Brb::Engine.adminable_routes << resource
+        Brb::Engine.adminable_routes << resource unless options[:private]
         namespace :admin do
           self.resources(resource) do
             # TODO: Only load this when a model has the taggable concern

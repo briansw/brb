@@ -15,6 +15,7 @@ class Brb::InstallGenerator < Rails::Generators::Base
 
   def create_users_resource
     template 'models/user_model.rb', 'app/models/user.rb'
+    template 'views/user_form.html.erb', 'app/views/admin/users/_form.html.erb'
     migration_template 'migrations/users_migration.rb', 'db/migrate/create_users.rb'
   end
 

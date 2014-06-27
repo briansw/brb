@@ -14,17 +14,54 @@ class Brb::InstallGenerator < Rails::Generators::Base
   end
 
   def create_users_resource
-    template 'models/user_model.rb', 'app/models/user.rb'
-    template 'views/user_form.html.erb', 'app/views/admin/users/_form.html.erb'
-    migration_template 'migrations/users_migration.rb', 'db/migrate/create_users.rb'
+    template 'controllers/user.rb', 'app/controllers/admin/users_controller.rb'
+    template 'models/user.rb', 'app/models/user.rb'
+    template 'policies/user_policy.rb', 'app/policies/user_policy.rb'
+    template 'views/admin/users/_form.html.erb', 'app/views/admin/users/_form.html.erb'
+    migration_template 'migrations/user.rb', 'db/migrate/create_users.rb'
   end
 
   def create_images_resource
-    template 'models/image_model.rb', 'app/models/image.rb'
-    migration_template 'migrations/images_migration.rb', 'db/migrate/create_images.rb'
+    template 'models/image.rb', 'app/models/image.rb'
+    migration_template 'migrations/image.rb', 'db/migrate/create_images.rb'
   end
 
   def create_image_uploader
     template 'uploaders/image_uploader.rb', 'app/uploaders/image_uploader.rb'
   end
+
+  def create_content_blocks_migration
+    migration_template 'migrations/content_block.rb', 'db/migrate/create_content_blocks.rb'
+  end
+
+  def create_text_block
+    template 'models/text_block.rb', 'app/models/text_block.rb'
+    template 'views/admin/content_blocks/text_blocks/_form.html.erb', 'app/views/admin/content_blocks/text_blocks/_form.html.erb'
+    template 'views/content_blocks/text_blocks/_show.html.erb', 'app/views/content_blocks/text_blocks/_show.html.erb'
+    migration_template 'migrations/text_block.rb', 'db/migrate/create_text_blocks.rb'
+  end
+
+  def create_image_block
+    template 'models/image_block.rb', 'app/models/image_block.rb'
+    template 'views/admin/content_blocks/image_blocks/_form.html.erb', 'app/views/admin/content_blocks/image_blocks/_form.html.erb'
+    template 'views/content_blocks/image_blocks/_show.html.erb', 'app/views/content_blocks/image_blocks/_show.html.erb'
+    migration_template 'migrations/image_block.rb', 'db/migrate/create_image_blocks.rb'
+  end
+
+  def create_slideshow_block
+    template 'models/slideshow_block.rb', 'app/models/slideshow_block.rb'
+    template 'views/admin/content_blocks/slideshow_blocks/_form.html.erb', 'app/views/admin/content_blocks/slideshow_blocks/_form.html.erb'
+    template 'views/admin/content_blocks/slideshow_blocks/_slide.html.erb', 'app/views/admin/content_blocks/slideshow_blocks/_slide.html.erb'
+    template 'views/content_blocks/slideshow_blocks/_show.html.erb', 'app/views/content_blocks/slideshow_blocks/_show.html.erb'
+    migration_template 'migrations/slideshow_block.rb', 'db/migrate/create_slideshow_blocks.rb'
+    migration_template 'migrations/slide.rb', 'db/migrate/create_slides.rb'
+  end
+
+  def create_video_block
+    template 'models/video_block.rb', 'app/models/video_block.rb'
+    template 'views/admin/content_blocks/video_blocks/_form.html.erb', 'app/views/admin/content_blocks/video_blocks/_form.html.erb'
+    template 'views/content_blocks/video_blocks/_show.html.erb', 'app/views/content_blocks/video_blocks/_show.html.erb'
+    migration_template 'migrations/video_block.rb', 'db/migrate/create_video_blocks.rb'
+  end
+
 end

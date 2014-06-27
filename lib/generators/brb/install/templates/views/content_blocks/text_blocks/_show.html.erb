@@ -1,0 +1,4 @@
+<div class="content-block <%%= css_class(cb) %>" id="<%%= css_id(cb) %>">
+  <%%= content_tag(:h2, cb.title, class: 'title') if cb.title.present? %>
+  <%%= cb.body %>
+</div>

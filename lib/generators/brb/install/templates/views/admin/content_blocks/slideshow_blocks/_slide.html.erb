@@ -1,0 +1,45 @@
+<div class="slide">
+  
+  <div class="actions-wrapper">
+    <div class="actions">
+      <%%= delete_slide('&#10008;', 'slide', !f.object.new_record?) %>
+      <div class="move">
+        <span class="kind">
+          <%%= f.object.slide_type.capitalize %> Slide
+        </span>
+        <span data-direction="-1" class="move-block">&#9650;</span>
+        <span data-direction="+1" class="move-block">&#9660;</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="content">
+    
+    <%% if f.object.of_type?(:video) %>
+      <div class="field">
+        <%%= f.label :video_url, 'Video URL' %>
+        <%%= f.video_field :video_url %>
+      </div>
+    <%% end %>
+    
+    <%% if f.object.of_type?(:image) %>
+      <div class="field">
+        <%%= f.image_field :image %>
+      </div>
+    <%% end %>
+    
+    <div class="field">
+      <%% if f.object.of_type?(:text) %>
+        <%%= f.rich_text_area :caption, placeholder: 'Text', class: 'textarea' %>
+      <%% else %>
+        <%%= f.rich_text_area :caption, placeholder: 'Caption (optional)', class: 'textarea caption', toolbar: true %>
+      <%% end %>
+    </div>
+
+    <%%= f.hidden_field :slide_type %>
+    <%%= f.position_field %>
+    <%%= f.destroy_field %>
+    
+  </div>
+  
+</div>

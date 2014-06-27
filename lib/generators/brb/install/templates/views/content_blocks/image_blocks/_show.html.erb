@@ -1,0 +1,6 @@
+<div class="content-block <%%= css_class(cb) %>" id="<%%= css_id(cb) %>">
+  <%%= image_tag(cb.image.attachment_url(:c4), class: 'lightboxable', alt: strip_tags(cb.caption), data: { id: css_lightbox_id(cb), hires: cb.image.attachment_url(:full_screen), caption: ft(cb.caption) }) %>
+  <div class="caption">
+    <%%= f(cb.caption) %>
+  </div>
+</div>

@@ -16,11 +16,6 @@ class Admin::AttachmentUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [100, 100]
   end
 
-  version :half_column, if: :image? do
-    process quality: 90
-    process resize_to_fit: [75, 200]
-  end
-
   def image?(file)
     file.content_type.include? 'image'
   end

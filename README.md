@@ -25,11 +25,11 @@ bundle config disable_local_branch_check true
 
 # Generators
 
-TODO
+`rails g brb:install` to bootstrap the app (currently seed data and image and user models)
 
 # Concerns
 
-TODO
+There are
 
 # Misc.
 

@@ -22,7 +22,6 @@ class Brb::InstallGenerator < Rails::Generators::Base
   end
 
   def create_images_resource
-    template 'models/image.rb', 'app/models/image.rb'
     migration_template 'migrations/image.rb', 'db/migrate/create_images.rb'
   end
 

@@ -10,7 +10,7 @@ Originally extracted from [harvarddesignmagazine.org](http://harvarddesignmagazi
 
 `gem 'brb', git: 'git@github.com:briansw/brb.git'`
 
-# Developing Brb
+# Developing with Brb
 
 Clone the Brb repo to your local machine:
 

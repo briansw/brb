@@ -13,17 +13,17 @@ class Brb::InstallGenerator < Rails::Generators::Base
     template 'seeds.rb', 'db/seeds.rb'
   end
 
-  def create_user_model
-    generate 'model', 'User --skip-migration'
-    migration_template 'create_users_migration.rb', 'db/migrate/create_users.rb'
+  def create_users_resource
+    template 'models/user_model.rb', 'app/models/user.rb'
+    migration_template 'migrations/users_migration.rb', 'db/migrate/create_users.rb'
   end
 
-  def create_image_model
-    generate 'model', 'Image --skip-migration'
-    migration_template 'create_images_migration.rb', 'db/migrate/create_images.rb'
+  def create_images_resource
+    template 'models/image_model.rb', 'app/models/image.rb'
+    migration_template 'migrations/images_migration.rb', 'db/migrate/create_images.rb'
   end
 
   def create_image_uploader
-    template 'image_uploader.rb', 'app/uploaders/image_uploader.rb'
+    template 'uploaders/image_uploader.rb', 'app/uploaders/image_uploader.rb'
   end
 end

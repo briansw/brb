@@ -1,9 +1,9 @@
 <div class="slides">
-  <%%= f.fields_for :slides do |field| %>
-    <%%= render 'admin/content_blocks/slideshow_block/slide', f: field %>
+  <%%= field.fields_for :slides do |f| %>
+    <%%= render 'admin/content_blocks/slideshow_block/slide', f: f %>
   <%% end %>
 </div>
 
-<%%= f.new_slideshow_slide_button('Add A Slide', type: :image) %>
-<%%#= f.new_slideshow_slide_button('Add a Video Slide', type: :video) %>
-<%%#= f.new_slideshow_slide_button('Add a Text Slide') %>
+<%%= field.new_slideshow_slide_button('Add A Slide', type: :image) %>
+<%%#= field.new_slideshow_slide_button('Add a Video Slide', type: :video) %>
+<%%#= field.new_slideshow_slide_button('Add a Text Slide') %>

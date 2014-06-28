@@ -8,9 +8,13 @@ class Brb::InstallGenerator < Rails::Generators::Base
     ActiveRecord::Generators::Base.next_migration_number(*args)
   end
 
-  def copy_seeds
+  def create_seeds
     File.delete('db/seeds.rb') if File.exist?('db/seeds.rb')
     template 'seeds.rb', 'db/seeds.rb'
+  end
+
+  def create_permit_params_concern
+    template 'controllers/concerns/permit_params.rb', 'app/controllers/concerns/permit_params.rb'
   end
 
   def create_users_resource
@@ -42,13 +46,14 @@ class Brb::InstallGenerator < Rails::Generators::Base
 
   def create_image_block
     template 'models/image_block.rb', 'app/models/image_block.rb'
-    template 'views/admin/content_blocks/image_block/_form.html.erb', 'app/views/admin/content_block/image_block/_form.html.erb'
+    template 'views/admin/content_blocks/image_block/_form.html.erb', 'app/views/admin/content_blocks/image_block/_form.html.erb'
     template 'views/content_blocks/image_block/_show.html.erb', 'app/views/content_blocks/image_block/_show.html.erb'
     migration_template 'migrations/image_block.rb', 'db/migrate/create_image_blocks.rb'
   end
 
   def create_slideshow_block
     template 'models/slideshow_block.rb', 'app/models/slideshow_block.rb'
+    template 'models/slide.rb', 'app/models/slide.rb'
     template 'views/admin/content_blocks/slideshow_block/_form.html.erb', 'app/views/admin/content_blocks/slideshow_block/_form.html.erb'
     template 'views/admin/content_blocks/slideshow_block/_slide.html.erb', 'app/views/admin/content_blocks/slideshow_block/_slide.html.erb'
     template 'views/content_blocks/slideshow_block/_show.html.erb', 'app/views/content_blocks/slideshow_block/_show.html.erb'

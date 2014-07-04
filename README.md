@@ -29,7 +29,11 @@ bundle config disable_local_branch_check true
 
 # Concerns
 
-There are
+```ruby
+def sluggable_field
+  filed_to_generate_slug_from
+end
+```
 
 # Misc.
 

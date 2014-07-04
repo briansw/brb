@@ -6,6 +6,7 @@ module Brb
       included do
         include Concerns::Adminable
         include Concerns::CRUDTable
+        include Concerns::GenerateSlug
       end
       
       module ClassMethods

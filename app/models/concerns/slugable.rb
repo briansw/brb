@@ -15,7 +15,11 @@ module Concerns::Slugable
     end
 
     def to_param
-      slug
+      if self.respond_to?('slug')
+        slug
+      else
+        id.to_s
+      end
     end
   end
 

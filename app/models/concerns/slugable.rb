@@ -4,9 +4,9 @@ module Concerns::Slugable
   module ClassMethods
     
     def slugable(name)
-      class_eval <<-CODE, __FILE__, __LINE__
-        before_save :generate_slug
+      before_save :generate_slug
 
+      class_eval <<-CODE, __FILE__, __LINE__ + 1
         def generate_slug
           self.slug = self.#{name}.mb_chars.normalize(:kd)
             .gsub(/[^\x00-\x7F]/n,'').parameterize.gsub('_', '')

@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '~> 4.1.2'
   s.add_dependency 'bcrypt-ruby', '~> 3.1.5'
   
+  s.add_dependency 'mini_magick'
   s.add_dependency 'carrierwave'
   s.add_dependency 'kaminari'
   s.add_dependency 'pundit', '~> 0.2.2'

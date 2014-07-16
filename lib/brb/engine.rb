@@ -13,7 +13,19 @@ module Brb
     end
     
     config.to_prepare do
-      Brb::Engine.adminable_routes = []
+      Brb::Engine.adminable_routes = []     
+    end
+    
+    initializer "brb.setup_root_route", after: "finisher_hook" do |app|
+      app.reload_routes!
+      if !app.routes.routes.any? {|r| r.name == 'admin_root'} && 
+          Brb::Engine.adminable_routes.any?
+        Rails.application.routes.draw do
+          namespace :admin do
+            root to: "#{Brb::Engine.adminable_routes.first}#index"
+          end
+        end
+      end
     end
     
     def self.admin_classes

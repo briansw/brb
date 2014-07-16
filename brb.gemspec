@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '~> 4.1.2'
   s.add_dependency 'bcrypt-ruby', '~> 3.1.5'
   
+  s.add_dependency 'mini_magick'
   s.add_dependency 'carrierwave'
   s.add_dependency 'kaminari'
   s.add_dependency 'pundit', '~> 0.2.2'
@@ -28,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'redcarpet'
 
   s.add_dependency 'jquery-rails'
-  s.add_dependency 'jquery-ui-rails'
+  s.add_dependency 'jquery-ui-rails', '~> 5.0.0'
   s.add_dependency 'jquery-fileupload-rails'
   s.add_dependency 'select2-rails', '~> 3.5.4'
   s.add_dependency 'selectize-rails'

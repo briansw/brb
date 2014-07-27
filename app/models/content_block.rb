@@ -9,6 +9,10 @@ class ContentBlock < ActiveRecord::Base
     has_one block_type, dependent: :destroy
     accepts_nested_attributes_for block_type
   end
+
+  def path_name
+    self.block_type.underscore
+  end
   
   def as_json(options = {})
     options.reverse_merge! only: [:id], include: @@block_types

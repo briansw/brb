@@ -1,26 +1,27 @@
 module Concerns::Slugable
   extend ActiveSupport::Concern
 
-  included do
-    before_save :generate_slug
+  module ClassMethods
+    
+    def slugable(name)
+      before_save :generate_slug
 
-    def generate_slug
-      if self.respond_to?('sluggable_field')
-        self.slug = self.sluggable_field.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').parameterize.gsub('_', '')
-      end
-    end
+      class_eval <<-CODE, __FILE__, __LINE__ + 1
+        def generate_slug
+          self.slug = self.#{name}.mb_chars.normalize(:kd)
+            .gsub(/[^\x00-\x7F]/n,'').parameterize.gsub('_', '')
+        end
 
-    def self.from_param(param)
-      find_by_slug!(param)
-    end
+        def self.from_param(param)
+          find_by_slug!(param)
+        end
 
-    def to_param
-      if self.respond_to?('slug')
-        slug
-      else
-        id.to_s
-      end
+        def to_param
+          #{name}
+        end
+      CODE
     end
+    
   end
 
 end

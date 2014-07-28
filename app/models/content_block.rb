@@ -3,7 +3,7 @@ class ContentBlock < ActiveRecord::Base
   belongs_to :parent, polymorphic: true
   
   @@block_types = [:text_block, :image_block, :video_block, 
-    :slideshow_block, :interview_block]
+    :slideshow_block, :gist_block, :interview_block]
   
   @@block_types.each do |block_type|
     has_one block_type, dependent: :destroy

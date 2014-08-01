@@ -1,4 +1,4 @@
-module Concerns::Slugable
+module Concerns::Sluggable
   extend ActiveSupport::Concern
 
   module ClassMethods

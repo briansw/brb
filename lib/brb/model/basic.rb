@@ -6,7 +6,7 @@ module Brb
       included do
         include Concerns::Adminable
         include Concerns::CRUDTable
-        include Concerns::Slugable
+        include Concerns::Sluggable
         include Concerns::Positionable
       end
       

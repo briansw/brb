@@ -2,7 +2,7 @@ class ContentBlock < ActiveRecord::Base
 
   belongs_to :parent, polymorphic: true
 
-  @@block_types = Dir.glob("#{Rails.root}/app/models/*_block.rb").collect do |block|
+  @@block_types = Dir.glob("#{Rails.root}/app/models/**/*_block.rb").collect do |block|
     block.gsub(/.*\//, '').gsub('.rb', '').to_sym
   end
   

@@ -20,6 +20,10 @@ class ContentBlock < ActiveRecord::Base
     super(options)
   end
 
+  def self.block_types
+    @@block_types
+  end
+
   def self.block_list_from_files
     blocks = Dir.glob("#{Rails.root}/app/models/*_block.rb")
 

@@ -3,7 +3,7 @@ module Concerns::Sluggable
 
   module ClassMethods
     
-    def slugable(name)
+    def sluggable(name)
       before_save :generate_slug
 
       class_eval <<-CODE, __FILE__, __LINE__ + 1

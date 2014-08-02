@@ -12,8 +12,7 @@ class ContentBlock < ActiveRecord::Base
   end
 
   def self.block_list_from_files
-    blocks = Dir.glob("#{Rails.root}/app/models/*_block.rb")
-
+    blocks = Dir.glob("#{Rails.root}/app/models/**/*_block.rb")
     blocks.collect do |block|
       File.basename(block, '.rb').to_sym
     end

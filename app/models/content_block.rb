@@ -15,7 +15,7 @@ class ContentBlock < ActiveRecord::Base
     blocks = Dir.glob("#{Rails.root}/app/models/*_block.rb")
 
     blocks.collect do |block|
-      block.gsub(/.*\//, '').gsub('.rb', '').to_sym
+      File.basename(block, '.rb').to_sym
     end
   end
 

@@ -17,7 +17,7 @@ module Concerns::Sluggable
         end
 
         def to_param
-          slug
+          self.slug
         end
       CODE
     end

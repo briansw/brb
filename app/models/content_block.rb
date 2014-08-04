@@ -2,6 +2,8 @@ class ContentBlock < ActiveRecord::Base
 
   belongs_to :parent, polymorphic: true
 
+  mattr_accessor :block_types
+
   def path_name
     self.block_type.underscore
   end
@@ -17,8 +19,10 @@ class ContentBlock < ActiveRecord::Base
       File.basename(block, '.rb').to_sym
     end
   end
+  
+  @@block_types = block_list_from_files
 
-  block_list_from_files.each do |block_type|
+  @@block_types.each do |block_type|
     has_one block_type, dependent: :destroy
     accepts_nested_attributes_for block_type
   end

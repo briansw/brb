@@ -6,12 +6,15 @@ class SluggableTest < ActiveSupport::TestCase
     include Concerns::Sluggable
   end
 
-  class AddsMethods
-    include Concerns::Sluggable
+  class AddsMethods < NoMethods
+    attr_accessor :some_attribute
     def self.before_save(*args); end
-    def test
-      'foo'
-    end
+  end
+  
+  class SlugMethod < NoMethods
+    attr_accessor :slug
+    attr_accessor :some_attribute
+    def self.before_save(*args); end
   end
   
   test 'doesnt add methods when included' do
@@ -20,10 +23,16 @@ class SluggableTest < ActiveSupport::TestCase
   end
   
   test 'adds methods when called' do
-    AddsMethods.sluggable :test
+    AddsMethods.sluggable :some_attribute
     assert AddsMethods.respond_to?(:from_param)
     assert AddsMethods.new.respond_to?(:generate_slug)
-    assert_equal 'foo', AddsMethods.new.to_param
+  end
+  
+  test 'returns slug from to_param' do
+    SlugMethod.sluggable :some_attribute
+    record = SlugMethod.new
+    record.slug = 'foo'
+    assert_equal 'foo', record.to_param
   end
   
 end

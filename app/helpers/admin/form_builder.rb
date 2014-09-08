@@ -59,18 +59,23 @@ class Admin::FormBuilder < ActionView::Helpers::FormBuilder
     
     content_tag :div, class: 'image-field' do
       image = @object.send(method.to_sym) || @object.send("build_#{method}")
-      image_element = content_tag(:div, class: 'image') do
-        concat image_attachment(image) unless image.new_record?
-        concat(fields_for(method, image) do |fields| 
-          concat fields.image_destroy_field
-          concat fields.file_field(:attachment, data: {
-            url: admin_images_path(format: :json)
-          })
+      uploader = fields_for(method, image) do |fields|
+        attachment = fields.file_field(:attachment, data: {
+          url: admin_images_path(format: :json)
+        })
+
+        content_tag(:div, class: 'image') do
+          concat image_attachment(image) unless image.new_record?
+          concat fields.image_destroy_field()
           concat fields.hidden_field(:attachment_cache)
           concat fields.hidden_field(:id, class: 'image-id')
-        end)
+        end + attachment
+
+
       end
-      image_element + render(options[:progress_template])
+
+      concat uploader
+      concat render(options[:progress_template])
     end
   end
   

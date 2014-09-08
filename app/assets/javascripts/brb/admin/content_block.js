@@ -15,7 +15,7 @@ $(function(){
       }
   });
   
-  $('.slides').sortableSlides()
+  $('.slides').sortableSlides();
   
   $(document).on('click', '.delete-content-block', function(event) {
       event.preventDefault();
@@ -140,6 +140,6 @@ function setTextAreas() {
         
         if (typeof $this.data('editor') == "undefined") {
             $this.createRichTextArea();
-        };
+        }
     });
 }

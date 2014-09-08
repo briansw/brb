@@ -232,6 +232,7 @@ jQuery.fn.extend({
             stop: function(event, ui) {
                 ui.item.wasMoved();
                 setTextAreas();
+                updateSequence();
             }
         });
         return $(this);

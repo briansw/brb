@@ -50,6 +50,10 @@
     vertical-align: middle;
   }
 
+  .images-field .images .image:hover {
+    cursor: move;
+  }
+
   .images-field,
   .image-field {
     .image {

@@ -211,7 +211,7 @@ jQuery.fn.extend({
               error: uploadError
           });
 
-          if (!multiple && $field.find('img').length == 0) {
+          if (!multiple && $field.find('img').length == 0 || $field.find('img').attr('src') == '') {
             $field.find('.delete').toggle($field.find('img').length);
           }
         });
@@ -221,6 +221,20 @@ jQuery.fn.extend({
             $(document).bind('drop dragover', window.preventDefault);
         }
         return $this;
+    },
+
+    sortableImages: function(){
+        $(this).sortable({
+            axis: 'y',
+            items: '.image',
+            containment: 'parent',
+            stop: function(event, ui) {
+                ui.item.wasMoved();
+                setTextAreas();
+                updateSequence();
+            }
+        });
+        return $(this);
     },
     
     sortableSlides: function(){

@@ -9,7 +9,7 @@ module Concerns::Positionable
 
   def set_positions
     if self.respond_to?('position')
-      records = self.class.all.active.positioned.to_a.reject!{ |record| record == self }
+      records = relevant_records.positioned.to_a.reject!{ |record| record == self }
       self.position ||= last_position(records)
       index = self.position - 1 < 0 ? 0 : self.position - 1
       records.insert(index, self).compact!
@@ -18,6 +18,14 @@ module Concerns::Positionable
         position = x + 1
         record.update_columns(position: position)
       end
+    end
+  end
+
+  def relevant_records
+    if self.class.name == 'Image'
+      self.class.where(relationship_name: self.relationship_name, parent_id: self.parent_id)
+    else
+      self.class.all
     end
   end
 

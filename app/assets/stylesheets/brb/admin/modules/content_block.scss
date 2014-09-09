@@ -66,6 +66,7 @@
   input[type="file"] { @extend %inlineblock; padding: 5px; }
   width: 100%;
   margin-bottom: $gutter !important;
+  .delete { display: none; }
   .actions {
     height: 30px !important;
     border-bottom: 1px solid $gray;

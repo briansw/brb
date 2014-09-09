@@ -8,6 +8,7 @@ class CreateImages < ActiveRecord::Migration
       t.datetime "updated_at"
       t.string   "relationship_name"
       t.text     "caption"
+      t.integer  "position"
 
       t.timestamps
     end

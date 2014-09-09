@@ -178,7 +178,7 @@ jQuery.fn.extend({
                   file_type        = $(file_name.toLowerCase().split('.')).last()[0],
                   image_path;
               
-              $field.find('.delete').show()
+              $field.find('.delete').show();
               $field.find('.pdf-attachment').remove();
 
               if (!$image.length) {
@@ -197,23 +197,23 @@ jQuery.fn.extend({
             }
           };
             
-            var uploadError = function(e, data) {
-                console.log('upload error', data);
-            };
-            
-            $input.fileupload({
-                dropZone: $field,
-                formData: [],
-                paramName: 'image[attachment]',
-                add: addFile,
-                progress: uploadProgress,
-                done: uploadDone,
-                error: uploadError
-            }); 
-            
-            if (!multiple) {
-              $field.find('.delete').toggle($field.find('img').length);
-            };
+          var uploadError = function(e, data) {
+              console.log('upload error', data);
+          };
+
+          $input.fileupload({
+              dropZone: $field,
+              formData: [],
+              paramName: 'image[attachment]',
+              add: addFile,
+              progress: uploadProgress,
+              done: uploadDone,
+              error: uploadError
+          });
+
+          if (!multiple && $field.find('img').length == 0 || $field.find('img').attr('src') == '') {
+            $field.find('.delete').toggle($field.find('img').length);
+          }
         });
         
         if (typeof window.preventDefault == "undefined") {
@@ -221,6 +221,20 @@ jQuery.fn.extend({
             $(document).bind('drop dragover', window.preventDefault);
         }
         return $this;
+    },
+
+    sortableImages: function(){
+        $(this).sortable({
+            axis: 'y',
+            items: '.image',
+            containment: 'parent',
+            stop: function(event, ui) {
+                ui.item.wasMoved();
+                setTextAreas();
+                updateSequence();
+            }
+        });
+        return $(this);
     },
     
     sortableSlides: function(){

@@ -5,7 +5,7 @@ $(function(){
     $(this).parents('.image').toggleDestroy();
   })
   
-})
+});
 
 $.fn.extend({
   toggleDestroy: function(){
@@ -16,4 +16,4 @@ $.fn.extend({
     $this.toggleClass('will-destroy');
     $input.val(value === "true" ? "false" : "true");
   }
-})
+});

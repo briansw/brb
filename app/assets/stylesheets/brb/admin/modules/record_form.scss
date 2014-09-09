@@ -55,17 +55,28 @@
   .image-field img {
     vertical-align: middle;
   }
-  
+
+  .images-field .images .image:hover {
+    cursor: move;
+  }
+
   .images-field,
   .image-field {
     .image {
+      background: $light_blue;
       position: relative;
       margin-bottom: 10px;
       
       .delete {
         position: absolute;
-        top: 6px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+           -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+             -o-transform: translateY(-50%);
+                transform: translateY(-50%);
         right: 10px;
+        color: $red;
       }
       
       &.will-destroy {

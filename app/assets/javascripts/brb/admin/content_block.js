@@ -16,7 +16,8 @@ $(function(){
   });
   
   $('.slides').sortableSlides();
-  
+  $('.images-field .images').sortableImages();
+
   $(document).on('click', '.delete-content-block', function(event) {
       event.preventDefault();
 
@@ -125,13 +126,17 @@ $(function(){
 });
 
 function updateSequence() {
-    $('.content-block > .content > .position').each(function(x) {
-        $(this).val(x + 1);
-    });
-    
-    $('.slides .position').each(function(x) {
-        $(this).val(x + 1);
-    });
+  $('.content-block > .content > .position').each(function(x) {
+    $(this).val(x + 1);
+  });
+
+  $('.slides .position').each(function(x) {
+    $(this).val(x + 1);
+  });
+
+  $('.images-field .images .image .position').each(function(x) {
+    $(this).val(x + 1);
+  });
 }
 
 function setTextAreas() {

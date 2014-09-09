@@ -13,7 +13,7 @@ class Admin::AttachmentUploader < CarrierWave::Uploader::Base
 
   version :admin_thumb, if: :image? do
     process quality: 90
-    process :resize_to_fit => [100, 100]
+    process :resize_to_fit => [60, 40]
   end
 
   def image?(file)

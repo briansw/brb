@@ -211,7 +211,7 @@ jQuery.fn.extend({
               error: uploadError
           });
 
-          if (!multiple) {
+          if (!multiple && $field.find('img').length == 0) {
             $field.find('.delete').toggle($field.find('img').length);
           }
         });

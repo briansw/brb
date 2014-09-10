@@ -30,7 +30,7 @@ module Concerns::Positionable
   end
 
   def last_position(records)
-    if records.present?
+    if records.present? && records.last.position.present?
       records.last.position + 1
     else
       1

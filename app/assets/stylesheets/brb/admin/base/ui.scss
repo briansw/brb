@@ -184,6 +184,7 @@ input[type="file"] {
   @extend .large-button;
   padding: 5px 8px;
   position: static;
+  top: initial;
 }
 
 .cancel-button {

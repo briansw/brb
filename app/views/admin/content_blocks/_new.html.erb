@@ -1,7 +1,7 @@
 <div class="content-block-wrapper" id="content-block-<%= content_block_id %>-wrapper">
   <div id="placeholder-options"></div>
 
-  <div id="content-block-<%= content_block_id %>" class="content-block" style="display: none;">
+  <div id="content-block-<%= content_block_id %>" class="content-block <%= block_type.underscore.dasherize %>" style="display: none;">
 
     <%= render('admin/content_blocks/actions', content_block_id: content_block_id, content_block_field: content_block_field, existing: false, kind: block_type) %>
 

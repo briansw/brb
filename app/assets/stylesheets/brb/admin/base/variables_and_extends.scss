@@ -64,6 +64,7 @@ $serif: Times, Times New Roman, serif;
   background: url('/ui/' + $img) no-repeat #{$position};
 }
 
+// TODO: replace mixin with transform
 @mixin verticalalign {
   position: absolute;
   top: 50%;
@@ -72,10 +73,19 @@ $serif: Times, Times New Roman, serif;
           transform: translateY(-50%);
 }
 
+// TODO: replace mixin with transform
 @mixin horizontalalign {
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+
+@mixin transform($value) {
+  -webkit-transform: $value;
+     -moz-transform: $value;
+      -ms-transform: $value;
+       -o-transform: $value;
+          transform: $value;
 }

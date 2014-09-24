@@ -3,7 +3,7 @@
       <%= f.new_content_block_buttons %>
     </div>
 
-    <div id="content-block-<%= content_block_field.object_id %>" class="content-block">
+    <div id="content-block-<%= content_block_field.object_id %>" class="content-block <%= content_block_field.object.block_type.underscore.dasherize %>">
 
       <%= render('admin/content_blocks/actions', content_block_id: content_block_field.object_id, content_block_field: content_block_field, existing: true, kind: content_block_field.object.block_type) %>
 

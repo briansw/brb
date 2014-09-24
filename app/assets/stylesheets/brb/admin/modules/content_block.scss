@@ -19,48 +19,54 @@
   @extend %one-half-space-after;
   background: $white;
 
-  .field {
-    margin-bottom: 10px !important;
-  }
-
-  input[type="text"] {
-    width: 100%;
-  }
-
-  textarea {
-    width: 100%;
-  }
-
-  .textarea.caption {
-    height: 75px;
-  }
+  .field { margin-bottom: 10px !important; }
+  input[type="text"] { width: 100%; }
+  textarea { width: 100%; }
+  .textarea.caption { height: 75px; }
 
   .actions-wrapper {
-    width: 100%;
+    position: absolute;
+    @extend %inlineblock;
+    width: 30px;
+    height: 100%;
     .actions {
-      height: 40px;
+      width: 100%;
+      height: 100%;
       background: $light_blue;
       position: relative;
-      text-align: right;
-      .delete-content-block { @include verticalalign; right: $gutter; }
+
+      .delete-content-block {
+        display: block;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+      }
+
       &:hover { cursor: move; }
       .move {
-        @include verticalalign;
-        left: $gutter;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
         color: $blue;
-        .kind { padding-right: 10px; }
+        .kind { display: none; padding-right: 10px; }
         .move-block:hover { cursor: pointer; }
       }
     }
   }
 
   .content {
-    padding: 10px 10px 10px 10px;
+    @extend %inlineblock;
+    width: 100%;
+    padding: 10px 10px 10px 40px;
   }
 }
 
 .content-block {
-  @extend %c4;
+  background: $light_gray;
   @extend %nogutters;
   .image-field .delete { display: none; }
 }

@@ -1,0 +1,15 @@
+.image-block {
+
+  .content {
+    width: 100%;
+  }
+
+  .image-field {
+    width: auto;
+    .image { background: $light_gray; }
+  }
+
+  .column {
+    @extend %inlineblock;
+  }
+}

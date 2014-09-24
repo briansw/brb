@@ -16,19 +16,15 @@ module Concerns::Sluggable
       class_eval <<-CODE, __FILE__, __LINE__ + 1
 
         def generate_slug
-          sluggable_options.collect! do |field|
-            slugify(field)
+          sluggable_values = []
+          sluggable_options.each do |field|
+            sluggable_values << slugify(field)
           end
 
-          self.slug = sluggable_options.collect{ |f| f.present? }.first
-
+          self.slug = sluggable_values.reject{ |v| v.blank? }.first
         end
 
         def slugify(field)
-
-puts field
-puts self.send(field).present?
-
           if self.respond_to?(field) && self.send(field).present?
             self.send(field).mb_chars.normalize(:kd)
             .gsub(/[^\x00-\x7F]/n,'').parameterize.gsub('_', '')

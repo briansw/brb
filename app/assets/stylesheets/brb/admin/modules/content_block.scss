@@ -59,10 +59,9 @@
   }
 
   .content {
-    @extend %c4;
     @extend %inlineblock;
-    margin-left: 30px;
-    padding: 10px 10px 10px 10px;
+    width: 100%;
+    padding: 10px 10px 10px 40px;
   }
 }
 

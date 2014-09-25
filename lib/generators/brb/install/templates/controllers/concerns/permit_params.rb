@@ -19,6 +19,10 @@ module Admin::Concerns::PermitParams
       :parent_id,
       :parent_type,
       :caption,
+      :position,
+      :width,
+      :height,
+      :content_type,
       :_destroy
     ]
   end

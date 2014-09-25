@@ -1,0 +1,25 @@
+.slideshow-block {
+  .slide {
+    background: $light_blue;
+    input[type="file"] { @extend %inlineblock; padding: 5px; }
+    width: 100%;
+    margin-bottom: $gutter !important;
+
+    .image {
+      background: transparent;
+      .delete { display: none !important; }
+    }
+  }
+
+  .textarea.caption { height: 25px; }
+
+  .delete-slide {
+    color: $red;
+    bottom: 8px !important;
+  }
+
+  .column {
+    @extend %inlineblock;
+  }
+
+}

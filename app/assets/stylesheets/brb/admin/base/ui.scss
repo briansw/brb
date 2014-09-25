@@ -174,12 +174,6 @@ input[type="file"] {
   }
 }
 
-.delete-slide {
-  color: $red;
-  @include verticalalign;
-  right: $gutter;
-}
-
 .small-button {
   @extend .large-button;
   padding: 5px 8px;

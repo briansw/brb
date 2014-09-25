@@ -71,19 +71,6 @@
   .image-field .delete { display: none; }
 }
 
-.content-block .slide {
-  background: $light_blue;
-  input[type="file"] { @extend %inlineblock; padding: 5px; }
-  width: 100%;
-  margin-bottom: $gutter !important;
-  .actions {
-    height: 30px !important;
-    border-bottom: 1px solid $gray;
-  }
-
-  .textarea.caption { height: 25px; }
-}
-
 .content-block-wrapper.is-deleted {
   display: none;
 }

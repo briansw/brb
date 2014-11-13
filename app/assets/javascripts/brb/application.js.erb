@@ -276,11 +276,12 @@ jQuery.fn.extend({
             
             editor.formatValue = function(){
                 value = this.getValue();
-                value = this.setValue(value.replace(/<p>\s*<br\/?>\s*<\/p>/g, ''));
-                value = this.setValue(value.replace(/<p>\s*<br>\s*<\/p>/g, ''));
-                value = this.setValue(value.replace(/<p><br><\/p>/g, ''));
-                value = this.setValue(value.replace(/<p><\/p>/g, ''));
-                value = this.setValue(value.replace(/&nbsp;/g, ' '));
+                value = value.replace(/<p>\s*<br\/?>\s*<\/p>/g, '');
+                value = value.replace(/<p>\s*<br>\s*<\/p>/g, '');
+                value = value.replace(/<p><br><\/p>/g, '');
+                value = value.replace(/<p><\/p>/g, '');
+                value = value.replace(/&nbsp;/g, ' ');
+                this.setValue(value);
             };
 
             editor.on("load", function(){

@@ -14,7 +14,7 @@ class Brb::InstallGenerator < Rails::Generators::Base
   end
 
   def create_permit_params_concern
-    template 'controllers/concerns/permit_params.rb', 'app/controllers/concerns/permit_params.rb'
+    template 'controllers/admin/concerns/permit_params.rb', 'app/controllers/concerns/permit_params.rb'
   end
 
   def create_users_resource

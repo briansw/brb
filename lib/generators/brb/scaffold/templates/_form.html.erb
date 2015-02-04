@@ -1,0 +1,3 @@
+<%- permitted_attributes.each do |attr| -%>
+<%%= f.field :text_field, <%= attr.to_sym.inspect %> %>
+<%- end -%>

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    brb (0.0.2)
+    brb (0.0.3)
       acts-as-taggable-on
       bcrypt-ruby (~> 3.1.5)
       carrierwave

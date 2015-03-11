@@ -237,6 +237,22 @@ class Admin::FormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
+  def state_field(name)
+    content_tag :div, style: "display: inline-block;" do
+      @object.aasm.states.each do |state|
+        concat state_option(name, state)
+      end
+    end
+  end
+
+  def state_option(name, state)
+    content_tag(:div, class: 'state-option') do
+      concat self.radio_button(name, state.name)
+      concat ' '
+      concat self.label("#{name}_#{state.name}".to_sym, state.localized_name)
+    end
+  end
+
   def field(type, *args)
     options = args.extract_options!
     label = options[:label] || args.first

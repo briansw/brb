@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
   s.test_files = Dir['test/**/*']
 
-  s.add_dependency 'rails', '~> 4.1.2'
+  s.add_dependency 'rails', '~> 4.2.0'
   s.add_dependency 'bcrypt-ruby', '~> 3.1.5'
   
   s.add_dependency 'mini_magick'
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'jquery-fileupload-rails'
   s.add_dependency 'select2-rails', '~> 3.5.4'
   s.add_dependency 'selectize-rails'
-  s.add_dependency 'sass-rails', '~> 4.0.3'
+  s.add_dependency 'sass-rails', '~> 5.0.0'
 
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'factory_girl_rails', '~> 4.2.1'

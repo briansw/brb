@@ -12,7 +12,7 @@ PATH
       kaminari
       mini_magick
       pundit (~> 0.2.2)
-      rails (~> 4.1.2)
+      rails (~> 4.2.0)
       redcarpet
       sass-rails (~> 4.0.3)
       select2-rails (~> 3.5.4)

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    brb (0.0.3)
+    brb (1.0.0)
       acts-as-taggable-on
       bcrypt-ruby (~> 3.1.5)
       carrierwave
@@ -12,7 +12,7 @@ PATH
       kaminari
       mini_magick
       pundit (~> 0.2.2)
-      rails (~> 4.1.2)
+      rails (~> 4.2.0)
       redcarpet
       sass-rails (~> 4.0.3)
       select2-rails (~> 3.5.4)

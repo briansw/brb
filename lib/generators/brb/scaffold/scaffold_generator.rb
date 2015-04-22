@@ -9,7 +9,7 @@ class Brb::ScaffoldGenerator < Rails::Generators::NamedBase
     when :invoke
       generate :resource, file_name, *args
       inject_into_file File.join('app', 'models', "#{file_name}.rb"), after: %r{^class.*\n} do
-        "  include Brb::Model::Basic\n"
+        "  include Brb::Model::Full\n"
       end
     when :revoke
       destroy :resource, file_name

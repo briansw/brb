@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  admin_for :users
   admin_for :images, private: true
 
   namespace :admin do

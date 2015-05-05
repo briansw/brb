@@ -1,7 +1,7 @@
 <%- permitted_attributes.each do |attr| -%>
-<%- if attr == 'status' -%>
-<%%= f.field :status_field, <%= attr.to_sym.inspect %> %>
-<%- elsif attr == 'active' -%>
+<%- if attr == :status -%>
+<%%= f.field :state_field, <%= attr.to_sym.inspect %> %>
+<%- elsif attr == :active -%>
 <%%= f.field :check_box, <%= attr.to_sym.inspect %> %>
 <%- else -%>
 <%%= f.field :text_field, <%= attr.to_sym.inspect %> %>

@@ -253,15 +253,15 @@ class Admin::FormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
-  def field(type, *args)
+  def field(type, *args, &block)
     options = args.extract_options!
     label = options[:label] || args.first
     content_tag :div, class: 'field' do
       concat self.label(label)
       if self.method(type).arity == 1
-        concat self.send(type, *args)
+        concat self.send(type, *args, &block)
       else
-        concat self.send(type, *args, options)
+        concat self.send(type, *args, options, &block)
       end
     end
   end

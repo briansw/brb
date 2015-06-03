@@ -11,4 +11,8 @@ class Image < ActiveRecord::Base
     mount_uploader :attachment, Admin::AttachmentUploader
   end
 
+  def orientation
+    width / height > 0 ? :horizontal : :vertical
+  end
+
 end

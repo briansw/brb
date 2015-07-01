@@ -47,6 +47,7 @@ class Admin::FormBuilder < ActionView::Helpers::FormBuilder
 
     options[:path] = polymorphic_path([:admin, @object.class], action: 'tags', scope: name, format: :json)
     options[:class] += " tag-input #{name}-input"
+    options[:value] = @object.send(list_name).to_s
 
     multi_select_field(list_name, *args, options)
   end

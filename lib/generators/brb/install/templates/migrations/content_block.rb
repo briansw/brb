@@ -7,6 +7,7 @@ class CreateContentBlocks < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :content_blocks, [:parent_type, :parent_id, :block_type]
+
+    add_index :content_blocks, [:parent_type, :parent_id, :block_type], name: 'index_content_blocks_on_many_fields'
   end
 end
